@@ -1,0 +1,490 @@
+@include media-breakpoint-up(md) {
+  #wrapper-navbar {
+    width: 100%;
+    z-index: 1000;
+  }
+}
+
+$background-color-header: rgba(0,0,0,0.85) !important;
+
+.navbar {
+  background-color: $background-color-header;
+  padding: .7rem 1rem;
+  border-radius: 0;
+  border: 0;
+  margin-bottom: 0px;
+
+  > .header-logo-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  > .header-logo-menu:after,
+  > .header-logo-menu:before {
+    display: none;
+  }
+
+
+  @include media-breakpoint-down(md){
+    background-color: rgba(0,0,0,.6);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.15);
+    > .header-logo-menu {
+      flex-wrap: nowrap;
+      display: block;
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        height: 35px;
+      }
+
+      .navbar-collapse {
+        border-top: none;
+        box-shadow: none;
+      }
+
+      #navbarNavDropdown {
+        border-right: none;
+      }
+
+      .main-nav-wrapper {
+        display: block;
+      }
+    }
+  }
+  &.navbar-inverse {
+    .navbar-nav{
+      .nav-link {
+        color: #FFF;
+      }
+    }
+  }
+  .navbar-nav{
+    .nav-link {
+      position: relative;
+      text-decoration: none;
+      font-size: 18px;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: $primary;
+        transition: all 300ms ease;
+      }
+
+      @include media-breakpoint-down(md) {
+        &:before {
+          content: none;
+        }
+      }
+    }
+    .dropdown-item {
+      text-decoration: none;
+    }
+
+    .menu-item:hover, .current-menu-item, .current-menu-parent {
+      > .nav-link:before {
+        left: 0;
+        width: 100%;
+      }
+    }
+  }
+  &.navbar-expand-md {
+    .navbar-nav {
+      .nav-link {
+          padding: 8px;
+          margin: 0px;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border: 0px;
+    background-color: transparent;
+    margin: 4px 8px 4px 8px;
+    padding: 2px 0 2px 0;
+    height: 37px;
+    width: 41px;
+
+    .horizontal-line {
+      height: 2px;
+      width: 22px;
+      border: 1px solid white;
+      border-radius: 1px;
+      background-color: white;
+      margin-bottom: 4px;
+    }
+
+    .horizontal-line:first-child {
+      margin-top: 4px;
+    }
+
+    &:hover .horizontal-line, &:focus .horizontal-line {
+      background-color: $primary;
+      border-color: $primary;
+    }
+  }
+
+  .navbar-toggler {
+    color: $c-text;
+    border: none;
+    padding: 0;
+    margin: .25rem .5rem;
+    -webkit-appearance: none;
+    &:after {
+      content: '';
+      display: block;
+      visibility: hidden;
+      opacity: 0;
+      position: fixed;
+      z-index: -1;
+      top: 0;
+      right: 300px;
+      left: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.4);
+      transition: visibility 0ms ease 0ms, opacity 0ms ease 0ms;
+    }
+    .navbar-toggler-icon {
+      background: $c-text;
+      height: 1px;
+      margin: 14px 0;
+      position: relative;
+      transition: all 600ms ease;
+      &:before, &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: inherit;
+        background-color: $c-text;
+        position: absolute;
+        left: 0;
+        transition: inherit;
+        transform: rotate(0);
+      }
+      &:before {
+        top: -10px;
+      }
+      &:after {
+        bottom: -10px;
+      }
+    }
+    .offcanvas-open & {
+      &:after {
+        visibility: visible;
+        opacity: 1;
+        z-index: 9000;
+        transition: visibility 0ms ease 400ms, opacity 300ms ease 400ms;
+      }
+      .navbar-toggler-icon {
+        background: transparent;
+        &:before {
+          top: 0;
+          transform: rotate(45deg);
+        }
+        &:after {
+          bottom: 0;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  .navbar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .navbar-header:after,  .navbar-header:before{
+    display: none;
+  }
+}
+
+.navbar .navbar-brand {
+  padding: 0;
+  margin-left: 0px;
+
+  img {
+    max-height: 100%;
+    width: auto;
+  }
+}
+
+.outer-nav-wrapper .top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  .btn-link {
+    color: #FFF;
+    font-size: 14px;
+  }
+  .xp-btn {
+    border-right: 1px solid rgba(255,255,255,0.4);
+  }
+  .account {
+    padding-left: 20px;
+    border-left: 1px solid rgba(255,255,255,0.4);
+    .btn:first-child {
+      margin-right: 7px;
+    }
+  }
+}
+
+.main-nav-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#navbarNavDropdown {
+  margin-right: 20px;
+  padding-right: 20px;
+  border-right: 1px solid rgba(255,255,255,0.4);
+}
+
+.search-trigger, .account-mobile, .search-submit {
+  color: #FFF;
+  margin: .25rem .5rem;
+  padding: 2px 0;
+  background-color: transparent;
+  border: none;
+  svg path {
+    transition: all 150ms ease;
+  }
+  @include media-breakpoint-down(md) {
+    svg path {
+      fill: #fff;
+    }
+  }
+  &:hover, &:focus {
+    svg path {
+      fill: $primary
+    }
+  }
+}
+
+.account-mobile {
+  display: flex;
+  align-items: start;
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+
+  .fas {
+    font-size: 1.53125rem;
+    font-weight: 200;
+  }
+}
+
+.mobile-logout-btn, .mobile-login-btn {
+  &:hover, &:focus {
+    color: $primary
+  }
+}
+
+.collapse-trigger-button:not(.collapsed) {
+  font-size: 1rem;
+
+  svg, div {
+    display: none;
+    -webkit-transition: height 2s;
+    -moz-transition: height 2s;
+    -ms-transition: height 2s;
+    -o-transition: height 2s;
+    transition: height 2s;
+  }
+
+  .visible-on-show {
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    height: 25px;
+    width: 25px;
+    justify-content: space-evenly;
+    -webkit-transition: height 2s;
+    -moz-transition: height 2s;
+    -ms-transition: height 2s;
+    -o-transition: height 2s;
+    transition: height 2s;
+  }
+
+  .visible-on-show:hover, .visible-on-show:focus {
+    color: $primary;
+  }
+}
+
+@include media-breakpoint-down(md){
+  .site {
+    position: relative;
+    right: 0;
+    width: 100%;
+    transition: right 400ms ease;
+    &.offcanvas-open {
+      right: 300px;
+      overflow: visible;
+      position: fixed;
+    }
+  }
+
+  .top-bar {
+    position: fixed;
+    z-index: 10001;
+    top: 0;
+    bottom: 0;
+    right: -300px;
+    width: 300px;
+    height: 40px;
+    justify-content: center;
+    background-color: $gray-700;
+    visibility: visible;
+    transition: right 400ms ease;
+    .btn {
+      border: none;
+      flex: 1;
+    }
+    .offcanvas-open & {
+      right: 0;
+    }
+  }
+
+  .offcanvas-collapse {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    bottom: 0;
+    right: -300px;
+    width: 300px;
+    padding-top: 50px;
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: $gray-800;
+    transition-timing-function: ease;
+    transition-duration: 400ms;
+    transition-property: right, visibility;
+    display: block !important;
+    margin: 0 !important;
+    .offcanvas-open & {
+      right: 0;
+      visibility: visible;
+    }
+    .navbar-nav {
+      .nav-link:before {
+        display: none !important;
+      }
+      .dropdown-menu {
+        margin: 0 0 10px;
+        border: none;
+        background-color: $c-page-background;
+      }
+      .dropdown-item {
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+}
+
+.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:focus,.navbar-inverse .navbar-nav>.active>a:hover {
+  color: #fff;
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:focus,.navbar-inverse .navbar-nav>.open>a:hover {
+  color: #fff;
+  background-color: transparent;
+}
+
+.display-flex {
+  display: flex;
+  align-items: center;
+}
+
+.space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// remove blue outline
+input:focus, button:focus, a:focus {
+  outline: none;
+}
+
+// search ALA input box and button
+#autocompleteSearchALA {
+  margin-top: 10px;
+
+  input {
+    padding: 10px;
+    margin-right: 20px;
+    color: $background-color-header;
+    background-color: white;
+    border: none;
+    width: 100%;
+    border-radius:3px;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      color: red !important;
+      background-color: black !important;
+    }
+
+    &::placeholder {
+      color: $background-color-header;
+    }
+  }
+
+  .search-submit {
+    padding-right: 15px;
+  }
+}
+
+form.search-form {
+  margin-bottom: 0px;
+}
+
+&>nav {
+  .account-mobile {
+    display: flex;
+  }
+
+  // by default hide all buttons. Apps like regions will be using this feature.
+  .signUpBtn, .loginBtn, .myProfileBtn, .logoutBtn , .outer-nav-wrapper .top-bar .account{
+    display: none;
+  }
+
+  .signedIn .myProfileBtn,.signedIn .logoutBtn, .outer-nav-wrapper .top-bar .signedIn.account {
+    display: inline-block;
+  }
+
+  .signedIn .account-mobile {
+    &.myProfileBtn, &.logoutBtn {
+      display: flex;
+    }
+  }
+
+  .signedOut .signUpBtn,.signedOut .loginBtn, .outer-nav-wrapper .top-bar .signedOut.account {
+    display: inline-block;
+  }
+
+  .signedOut .account-mobile {
+    &.signUpBtn, &.loginBtn{
+      display: flex;
+    }
+  }
+}

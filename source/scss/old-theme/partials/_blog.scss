@@ -1,0 +1,363 @@
+.blog .wrapper {
+  margin-bottom: 40px;
+}
+
+// Styles for all post lists
+.post-list {
+
+  //Add margin to main post loop items
+  &.site-main {
+    .type-post {
+      margin-bottom: 25px;
+    }
+  }
+    .type-post {
+      a, img {
+        display: block;
+      }
+      a {
+        position: relative;
+        color: #FFF;
+        &:hover {
+          .overlay {
+            background-color: rgba($primary, 0.8);
+          }
+        }
+      }
+      .posted-on {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 14px;
+      }
+      //overlay with content pushed to bottom of container
+      .overlay {
+        padding: 20px 30px;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        background-color: transparent;
+        transition: background-color 300ms ease;
+        //background gradient on top over overlay but under content
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: -1px;
+          left: -1px;
+          right: -1px;
+          height: 50%;
+          background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%);
+          z-index: 1;
+        }
+      }
+      h2 {
+        font-family: 'Lato', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: inherit;
+      }
+      //move content on top of overlay gradient
+      .entry-header, .entry-content {
+        position: relative;
+        z-index: 10;
+        text-shadow: 0 2px 8px rgba(0,0,0,.6);
+        color: #FFF;
+      }
+      //truncate excerpt to 2 lines
+      .entry-content {
+        max-height: 3em;
+        overflow: hidden;
+        font-size: 14px;
+      }
+    }
+
+  //Now we have some overides for the text only version
+  //This is only visible in the latest posts widget
+  .text-only {
+    display: flex;
+    flex-direction: column;
+    article {
+      flex: 1;
+      &:last-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border-top: 1px solid $c-border;
+        //Add some padding on mobile
+        @include media-breakpoint-down(sm) {
+          margin-top: 1.5rem;
+          padding-top: 1.5rem;
+        }
+      }
+    }
+    .type-post {
+      a {
+        color: $c-text;
+        text-decoration: none;
+        img {
+          display: none;
+        }
+        .overlay {
+          position: static;
+          padding: 0;
+          &:after {
+            display: none;
+          }
+        }
+        .entry-header h2 {
+          color: $c-text;
+          transition: color 200ms ease;
+        }
+        .entry-header, .entry-content {
+          text-shadow: none;
+          color: $c-text;
+        }
+        .entry-content {
+          max-height: 4.6em;
+          @include media-breakpoint-only(lg) {
+            max-height: 3em;
+          }
+        }
+        &:hover {
+          .entry-header h2 {
+            color: $primary;
+          }
+          .overlay {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  justify-content: center;
+  font-size: 18px;
+  margin: 15px auto 10px;
+  a {
+    text-decoration: none;
+  }
+  @include media-breakpoint-down(xs) {
+    font-size: 16px;
+  }
+}
+
+.category-selector {
+  margin: 40px auto;
+  text-align: center;
+  select {
+    display: inline-block;
+    width: auto;
+  }
+}
+
+
+.addthis_inline_share_toolbox {
+  border:        1px solid $c-text;
+  padding:       7px 10px 2px;
+  height:        auto;
+  border-radius: 0;
+  display:       inline-block;
+  position:      relative;
+  min-width:     100px;
+  min-height:    40px;
+  background-color: transparent;
+  &:before {
+    content:     'Share';
+    display:     inline-block;
+    padding:     0 8px;
+    background:  #FFF;
+    color:       $c-text;
+    position:    absolute;
+    top: -1px;
+    font-size: 12px;
+    line-height: 1px;
+    left:        6px;
+    font-weight: normal;
+  }
+  &:after {
+    content: '';
+    display: table;
+    clear:   both;
+  }
+  .at-style-responsive .at-share-btn {
+    padding: 2px;
+    background-color: transparent !important;
+  }
+}
+
+// These are the styles for the post single pages
+.single-post {
+  @include media-breakpoint-up(md) {
+    #primary {
+      padding-top: 40px;
+      padding-right: 70px;
+      padding-bottom: 40px;
+    }
+    #right-sidebar {
+      padding-top: 40px;
+    }
+  }
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    @include media-breakpoint-down(xs) {
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+  }
+  .entry-meta {
+    font-family: 'Lato', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    @include media-breakpoint-down(md) {
+      font-size: 20px;
+    }
+    @include media-breakpoint-down(xs) {
+      font-size: 18px;
+      order: 1;
+      margin-top: 30px;
+    }
+  }
+  .wp-post-image {
+    float: right;
+    width: 50%;
+    margin: 0 0 20px 20px;
+    @include media-breakpoint-down(xs) {
+      float: none;
+      width: 100%;
+      margin: 0 0 20px;
+    }
+  }
+  .entry-content {
+    font-size: 16px;
+  }
+  .tags {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: $c-text-light;
+    margin-top: 30px;
+    a {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      font-weight: normal;
+      color: inherit;
+      display: inline-block;
+      &:first-of-type {
+        margin-left: 10px;
+      }
+    }
+  }
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0 0;
+    padding: 30px;
+    background-color: $c-page-background;
+    .addthis_inline_share_toolbox:before {
+      background-color: $c-page-background;
+    }
+    .btn {
+      border-width: 2px;
+      padding: 7px 25px;
+    }
+    @include media-breakpoint-down(xs) {
+      flex-direction: column;
+      .btn {
+        margin-top: 30px;
+      }
+    }
+  }
+}
+
+
+.pvtl-recent-posts-class {
+  .recent-post {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $gray-500;
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    a {
+      color: $c-text;
+      display: block;
+      text-decoration: none;
+      &:hover {
+        .recent-title {
+          color: $primary;
+        }
+      }
+    }
+    .recent-meta {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .recent-title {
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: $c-text;
+      transition: color 200ms ease;
+    }
+    .recent-content {
+      max-height: 4.6em;
+      overflow: hidden;
+    }
+  }
+}
+
+.latest-posts-block {
+  h3 {
+    color: $c-text;
+    margin-bottom: 1em;
+  }
+}
+
+.social-tabs {
+  border: 1px solid $gray-400;
+  .nav {
+    display: flex;
+    li {
+      flex: 1;
+      &:first-child {
+        border-right: 1px solid $gray-400;
+      }
+    }
+    a {
+      display: block;
+      line-height: 40px;
+      font-size: 18px;
+      color: $c-text-light;
+      text-decoration: none;
+      text-align: center;
+      background-color: $c-page-background;
+      border-bottom: 1px solid $gray-400;
+      &.active {
+        background-color: #FFF;
+        border-bottom-color: #FFF;
+      }
+    }
+  }
+  .tab-pane {
+    transition: opacity .2s ease;
+  }
+  //Re-enable those tabs on mobile
+  @include media-breakpoint-down(sm) {
+    .tab-pane {
+      display: none !important;
+      opacity: 0 !important;
+      border-bottom: none;
+      &.active {
+        display: block !important;
+        opacity: 1 !important;
+      }
+    }
+  }
+}
