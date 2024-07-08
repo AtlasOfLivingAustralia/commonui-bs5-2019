@@ -39,7 +39,7 @@
     font-size: 42px;
   }
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     padding-top: 50px;
     height: 300px;
     .banner-title {
@@ -47,7 +47,7 @@
     }
   }
 
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(sm) {
     height: 200px;
     .banner-title {
       font-size: 28px;

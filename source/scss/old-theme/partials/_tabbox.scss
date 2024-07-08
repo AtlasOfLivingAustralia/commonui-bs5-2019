@@ -120,7 +120,7 @@
 }
 
 //Mobile Accordion Tabs
-@include media-breakpoint-down(sm){
+@include media-breakpoint-down(md){
   .nav-tabs {
     display:none;
   }

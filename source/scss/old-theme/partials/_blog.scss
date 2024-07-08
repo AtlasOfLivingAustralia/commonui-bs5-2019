@@ -84,7 +84,7 @@
         justify-content: flex-end;
         border-top: 1px solid $c-border;
         //Add some padding on mobile
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-down(md) {
           margin-top: 1.5rem;
           padding-top: 1.5rem;
         }
@@ -138,7 +138,7 @@
   a {
     text-decoration: none;
   }
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(sm) {
     font-size: 16px;
   }
 }
@@ -204,7 +204,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       flex-direction: column;
       margin-bottom: 30px;
     }
@@ -213,10 +213,10 @@
     font-family: 'Lato', sans-serif;
     font-size: 24px;
     font-weight: 700;
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       font-size: 20px;
     }
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       font-size: 18px;
       order: 1;
       margin-top: 30px;
@@ -226,7 +226,7 @@
     float: right;
     width: 50%;
     margin: 0 0 20px 20px;
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       float: none;
       width: 100%;
       margin: 0 0 20px;
@@ -266,7 +266,7 @@
       border-width: 2px;
       padding: 7px 25px;
     }
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       flex-direction: column;
       .btn {
         margin-top: 30px;
@@ -349,7 +349,7 @@
     transition: opacity .2s ease;
   }
   //Re-enable those tabs on mobile
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     .tab-pane {
       display: none !important;
       opacity: 0 !important;

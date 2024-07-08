@@ -41,7 +41,7 @@ ul.menu {
 .entry-content .alignwide {
   margin-left:  -80px;
   margin-right: -80px;
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     margin-left: 0;
     margin-right: 0;
   }
@@ -60,7 +60,7 @@ ul.menu {
 .pb {
   padding-bottom: $block-spacing;
 }
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   .pt {
     padding-top: $block-spacing-small;
   }
@@ -100,7 +100,7 @@ ul.menu {
       text-decoration: underline;
     }
   }
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     display: none;
   }
 }
@@ -112,7 +112,7 @@ ul.menu {
     padding-top: 0;
     padding-bottom: 0;
   }
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     padding-top: $block-spacing-small;
     padding-bottom: $block-spacing-small;
   }
@@ -142,7 +142,7 @@ ul.menu {
     margin-bottom: $block-spacing;
     padding-top: $block-spacing;
     padding-bottom: $block-spacing;
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       margin-top: $block-spacing-small;
       margin-bottom: $block-spacing-small;
       padding-top: $block-spacing-small;

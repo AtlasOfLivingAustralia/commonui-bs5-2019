@@ -50,7 +50,7 @@
       margin-bottom: 0;
     }
   }
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     .logo-column {
       text-align: center;
       padding-bottom: 30px;
@@ -106,17 +106,17 @@
           flex-basis: 50%;
           padding-right: 10px;
         }
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-down(lg) {
           li {
             flex-basis: 100%;
           }
         }
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-down(md) {
           li {
             flex-basis: 50%;
           }
         }
-        @include media-breakpoint-down(xs) {
+        @include media-breakpoint-down(sm) {
           li {
             flex-basis: 100%;
           }
@@ -142,7 +142,7 @@
 }
 
 .site-footer {
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     .content-column:not(:last-child) {
       padding-bottom: 30px;
     }
@@ -180,12 +180,12 @@
       margin-right: 30px;
     }
   }
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     .menu {
       margin-top: 15px;
     }
   }
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(sm) {
     .menu {
       li:not(:last-child) {
         margin-right: 20px;
@@ -206,7 +206,7 @@
   .btn {
     margin-left: 30px;
   }
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     text-align: center;
     .btn {
       margin: 20px 0 0;
@@ -217,7 +217,7 @@
 .footer-subscribe {
   .gform_wrapper {
     margin: 0 0 0 30px;
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       margin: 20px 0 0;
     }
     .gfield {

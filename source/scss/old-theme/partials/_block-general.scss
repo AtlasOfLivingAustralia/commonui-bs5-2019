@@ -48,7 +48,7 @@ ul.links {
     font-size: 20px;
     font-style: italic;
   }
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(sm) {
     p {
       font-size: 18px;
     }
@@ -62,7 +62,7 @@ ul.links {
 .wp-block-quote {
   margin: 1em 3em;
   text-align: left;
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(sm) {
     margin: 1em 2em;
   }
 }

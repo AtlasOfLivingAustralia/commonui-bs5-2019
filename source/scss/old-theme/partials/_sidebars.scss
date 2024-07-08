@@ -14,7 +14,7 @@
     left: 0;
     bottom: 0;
     width: 50vw;
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       width: 100vw;
       left: 50%;
       transform: translateX(-50%);
