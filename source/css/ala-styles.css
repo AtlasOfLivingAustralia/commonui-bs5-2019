@@ -15,7 +15,20 @@ body.background-lightgrey {background-color:#f2f2f2;}
 /* Breadcrumb
 ================================= */
 section#breadcrumb {padding: 12px 0 15px 19px;border-bottom: 1px solid #E7E7E7;background-color: #E7E7E7;}
-section#breadcrumb li + li::before{  font-family: 'Glyphicons Halflings';content: "\e258";margin: 0 .6em;vertical-align: text-bottom;opacity: .3;}
+
+section#breadcrumb li + li::before {
+    display: inline-block;
+    content: "";
+    vertical-align: -.125em;
+    height: 1rem;
+    width: 2rem;
+    /* Bootstrap Icons SVG: chevron-right */
+    background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%23999' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708' clip-rule='evenodd'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+    background-position: 0.5rem 0;
+}
+
 .breadcrumb-list {list-style: none;margin: 0 0 0 35px;padding: 0;}
 .breadcrumb-list li {display: inline-block; line-height: normal}
 .breadcrumb-list li .glyphicon {margin-right: 5px;color: #bbb;}
