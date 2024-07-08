@@ -13,6 +13,7 @@ $background-color-header: rgba(0,0,0,0.85) !important;
   border-radius: 0;
   border: 0;
   margin-bottom: 0px;
+  flex-wrap: wrap;
 
   > .header-logo-menu {
     display: flex;
@@ -99,6 +100,10 @@ $background-color-header: rgba(0,0,0,0.85) !important;
         width: 100%;
       }
     }
+  }
+  #navbarOuterWrapper {
+    flex-direction: column;
+    align-items: flex-end;
   }
   &.navbar-expand-md {
     .navbar-nav {
