@@ -13,6 +13,17 @@ $brand-warning:         #ffc107 !default;
 $brand-danger:          #dc3545 !default;
 $brand-default:         #fff !default;
 
+
+$primary:               $brand-primary;
+$secondary:             $brand-primary-dark;
+$success:               $brand-success;
+$info:                  $brand-info;
+$warning:               $brand-warning;
+$danger:                $brand-danger;
+$light:                 $gray-light;
+$dark:                  $gray-dark;
+
+
 $yiq-contrasted-threshold:  150 !default;
 
 //== Scaffolding
