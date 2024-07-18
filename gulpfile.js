@@ -33,7 +33,7 @@ var paths = {
         ],
         dest: 'build/js/',
         jquery: 'source/vendor/jquery/jquery-3.7.1.js',
-        bootstrap: 'source/vendor/bootstrap/dist/js/bootstrap.js',
+        bootstrap: 'source/vendor/bootstrap/dist/js/bootstrap.bundle.js',
         jqueryui: 'source/vendor/jquery/jquery-ui-autocomplete.js'
     }
 };
