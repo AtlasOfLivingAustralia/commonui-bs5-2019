@@ -1,7 +1,7 @@
 <div id="wrapper-navbar" itemscope="" itemtype="http://schema.org/WebSite">
     <a class="skip-link sr-only sr-only-focusable" href="#INSERT_CONTENT_ID_HERE">Skip to content</a>
 
-    <nav class="navbar navbar-inverse navbar-expand-md">
+    <nav class="navbar navbar-dark navbar-expand-md">
         <div class="::containerClass:: header-logo-menu">
             <div class="navbar-header">
                 <div>
@@ -11,9 +11,9 @@
                              srcset="https://www.ala.org.au/app/uploads/2019/01/logo.png 1005w, https://www.ala.org.au/app/uploads/2019/01/logo-300x45.png 300w, https://www.ala.org.au/app/uploads/2019/01/logo-768x115.png 768w"
                              sizes="(max-width: 1005px) 100vw, 1005px"> </a>
                 </div>
-                <div class="display-flex ::loginStatus::">
-                    <button class="display-flex search-trigger hidden-md hidden-lg collapsed collapse-trigger-button" title="Open search dialog"
-                            data-toggle="collapse" data-target="#autocompleteSearchALA"
+                 <div class="display-flex ::loginStatus::">
+                    <button class="display-flex search-trigger d-md-none collapsed collapse-trigger-button" title="Open search dialog"
+                            data-bs-toggle="collapse" data-bs-target="#autocompleteSearchALA"
                             onclick="focusOnClickSearchButton()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 22 22">
                             <defs>
@@ -30,12 +30,15 @@
                         </svg>
                         <span class="collapse visible-on-show" aria-hidden="true">&times;</span>
                     </button>
-                    <a href="::loginURL::" role="button" class="account-mobile hidden-md hidden-lg loginBtn mobile-login-btn"
+                    <a href="::loginURL::" role="button" class="account-mobile d-md-none loginBtn mobile-login-btn"
                        title="Login button">
-                        <i class="fas fa-sign-in"></i>
+                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                      </svg>
                     </a>
                     <a href="==profileURL==" role="button"
-                       class="account-mobile hidden-md hidden-lg myProfileBtn" title="Profile">
+                       class="account-mobile d-md-none myProfileBtn" title="Profile">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 37 41">
                             <defs>
                                 <style>
@@ -51,18 +54,16 @@
                         </svg>
                     </a>
                     <a href="::logoutURL::" role="button"
-                       class="account-mobile hidden-md hidden-lg logoutBtn mobile-logout-btn" title="Logout">
-                        <i class="fas fa-sign-out"></i>
+                       class="account-mobile d-md-none logoutBtn mobile-logout-btn" title="Logout">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                      </svg>
                     </a>
-                    <button class="navbar-toggle collapsed collapse-trigger-button" type="button"
-                            data-toggle="collapse" data-target="#navbarOuterWrapper" aria-controls="navbarOuterWrapper"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <div class="horizontal-line"></div>
-                        <div class="horizontal-line"></div>
-                        <div class="horizontal-line"></div>
-                        <span class="collapse visible-on-show" aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+                </div> 
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarOuterWrapper" aria-controls="navbarOuterWrapper" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
 
             <div id="navbarOuterWrapper" class="outer-nav-wrapper collapse navbar-collapse">
@@ -78,7 +79,7 @@
                     </div>
                 </div>
                 <div class="main-nav-wrapper">
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <div class="xcollapse xnavbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                           <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSearch" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -155,9 +156,9 @@
                         </ul>
                       </div>
 
-                    <button class="search-trigger hidden-xs hidden-sm collapsed collapse-trigger-button"
-                            data-toggle="collapse"
-                            data-target="#autocompleteSearchALA" onclick="focusOnClickSearchButton()">
+                    <button class="search-trigger d-none d-md-block collapsed collapse-trigger-button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#autocompleteSearchALA" onclick="focusOnClickSearchButton()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 22 22"
                              title="Open search control">
                             <defs>
