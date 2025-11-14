@@ -23,6 +23,10 @@ var paths = {
         src: ['source/html/banner.html', 'source/html/footer.html', 'source/html/head.html'],
         dest: 'build/'
     },
+    mustache: {
+        src: ['templates/site-banner.mustache', 'templates/site-footer.mustache', 'templates/site-head.mustache'],
+        dest: 'build/'
+    },
     font: {
         src: ['source/vendor/old-fonts/*.*'],
         dest: 'build/fonts/'
@@ -116,6 +120,16 @@ function html(cb) {
     cb();
 };
 
+function mustache(cb) {
+    src(paths.mustache.src)
+        .pipe(replace(/==homeDomain==/g, buildvars.homeDomain))
+        .pipe(replace(/==signUpURL==/g, buildvars.signUpURL))
+        .pipe(replace(/==profileURL==/g, buildvars.profileURL))
+        .pipe(replace(/==fathomID==/g, buildvars.fathomID))
+        .pipe(dest(paths.mustache.dest));
+    cb();
+};
+
 function font() {
     return src(paths.font.src)
         .pipe(dest(paths.font.dest));
@@ -154,7 +168,7 @@ function otherJsFiles() {
 
 var js = parallel(jQuery, bootstrapJS, autocompleteJS, otherJsFiles);
 
-var build = parallel(css, testHTMLPage, html, font, js);
+var build = parallel(css, testHTMLPage, html, mustache, font, js);
 
 exports.otherCSSFiles = otherCSSFiles;
   
@@ -163,4 +177,5 @@ exports.css = css;
 exports.html = series([testHTMLPage, html]);
 exports.font = font;
 exports.js = js;
+exports.mustache = mustache;
 exports.build = build;
