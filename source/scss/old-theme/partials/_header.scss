@@ -59,8 +59,15 @@ $background-color-header: rgba(0,0,0,0.85) !important;
         display: block;
       }
     }
+    .dropdown-menu, .dropdown-item {
+      color: #fff;
+      background-color: transparent;
+    }
+    .dropdown-item:hover {
+      background-color: #333;
+    }
   }
-  &.navbar-inverse {
+  &.navbar-dark {
     .navbar-nav{
       .nav-link {
         color: #FFF;
@@ -141,7 +148,7 @@ $background-color-header: rgba(0,0,0,0.85) !important;
     }
   }
 
-  .navbar-toggler {
+  .navbar-togglex {
     color: $c-text;
     border: none;
     padding: 0;
@@ -161,7 +168,7 @@ $background-color-header: rgba(0,0,0,0.85) !important;
       background-color: rgba(0,0,0,0.4);
       transition: visibility 0ms ease 0ms, opacity 0ms ease 0ms;
     }
-    .navbar-toggler-icon {
+    .navbar-togglex-icon {
       background: $c-text;
       height: 1px;
       margin: 14px 0;
@@ -192,7 +199,7 @@ $background-color-header: rgba(0,0,0,0.85) !important;
         z-index: 9000;
         transition: visibility 0ms ease 400ms, opacity 300ms ease 400ms;
       }
-      .navbar-toggler-icon {
+      .navbar-togglex-icon {
         background: transparent;
         &:before {
           top: 0;
@@ -407,12 +414,12 @@ $background-color-header: rgba(0,0,0,0.85) !important;
   }
 }
 
-.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:focus,.navbar-inverse .navbar-nav>.active>a:hover {
+.navbar-dark .navbar-nav>.active>a,.navbar-dark .navbar-nav>.active>a:focus,.navbar-dark .navbar-nav>.active>a:hover {
   color: #fff;
   background-color: transparent;
 }
 
-.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:focus,.navbar-inverse .navbar-nav>.open>a:hover {
+.navbar-dark .navbar-nav>.open>a,.navbar-dark .navbar-nav>.open>a:focus,.navbar-dark .navbar-nav>.open>a:hover {
   color: #fff;
   background-color: transparent;
 }
@@ -436,6 +443,7 @@ input:focus, button:focus, a:focus {
 // search ALA input box and button
 #autocompleteSearchALA {
   margin-top: 10px;
+  width: 100%;
 
   input {
     padding: 10px;
