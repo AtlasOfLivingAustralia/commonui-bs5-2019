@@ -12,8 +12,8 @@
                              sizes="(max-width: 1005px) 100vw, 1005px"> </a>
                 </div>
                 <div class="display-flex ::loginStatus::">
-                    <button class="display-flex search-trigger hidden-md hidden-lg collapsed collapse-trigger-button" title="Open search dialog"
-                            data-toggle="collapse" data-target="#autocompleteSearchALA"
+                    <button class="display-flex search-trigger d-md-none d-lg-none collapsed collapse-trigger-button" title="Open search dialog"
+                            data-bs-toggle="collapse" data-bs-target="#autocompleteSearchALA"
                             onclick="focusOnClickSearchButton()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 22 22">
                             <defs>
@@ -30,12 +30,12 @@
                         </svg>
                         <span class="collapse visible-on-show" aria-hidden="true">&times;</span>
                     </button>
-                    <a href="::loginURL::" role="button" class="account-mobile hidden-md hidden-lg loginBtn mobile-login-btn"
+                    <a href="::loginURL::" role="button" class="account-mobile d-md-none d-lg-none loginBtn mobile-login-btn"
                        title="Login button">
                         <i class="fas fa-sign-in"></i>
                     </a>
                     <a href="==profileURL==" role="button"
-                       class="account-mobile hidden-md hidden-lg myProfileBtn" title="Profile">
+                       class="account-mobile d-md-none d-lg-none myProfileBtn" title="Profile">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 37 41">
                             <defs>
                                 <style>
@@ -51,11 +51,11 @@
                         </svg>
                     </a>
                     <a href="::logoutURL::" role="button"
-                       class="account-mobile hidden-md hidden-lg logoutBtn mobile-logout-btn" title="Logout">
+                       class="account-mobile d-md-none d-lg-none logoutBtn mobile-logout-btn" title="Logout">
                         <i class="fas fa-sign-out"></i>
                     </a>
                     <button class="navbar-toggle collapsed collapse-trigger-button" type="button"
-                            data-toggle="collapse" data-target="#navbarOuterWrapper" aria-controls="navbarOuterWrapper"
+                            data-bs-toggle="collapse" data-bs-target="#navbarOuterWrapper" aria-controls="navbarOuterWrapper"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <div class="horizontal-line"></div>
                         <div class="horizontal-line"></div>
@@ -66,7 +66,7 @@
             </div>
 
             <div id="navbarOuterWrapper" class="outer-nav-wrapper collapse navbar-collapse">
-                <div class="top-bar hidden-xs hidden-sm">
+                <div class="top-bar d-none d-sm-block hidden-sm">
                     <a href="==homeDomain==/contact-us/" class="btn btn-link btn-sm">Contact us</a>
                     <div class="account ::loginStatus::">
                         <a href="==signUpURL=="
@@ -155,9 +155,9 @@
                         </ul>
                       </div>
 
-                    <button class="search-trigger hidden-xs hidden-sm collapsed collapse-trigger-button"
-                            data-toggle="collapse"
-                            data-target="#autocompleteSearchALA" onclick="focusOnClickSearchButton()">
+                    <button class="search-trigger d-none d-sm-block hidden-sm collapsed collapse-trigger-button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#autocompleteSearchALA" onclick="focusOnClickSearchButton()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 22 22"
                              title="Open search control">
                             <defs>
