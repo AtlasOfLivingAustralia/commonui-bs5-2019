@@ -19,12 +19,8 @@ var paths = {
         jqueryui: 'source/vendor/jquery/jquery-ui-autocomplete.css',
         dependencycss: ['source/css/*.css']
     },
-    html: {
-        src: ['source/html/banner.html', 'source/html/footer.html', 'source/html/head.html'],
-        dest: 'build/'
-    },
     mustache: {
-        src: ['templates/site-banner.mustache', 'templates/site-footer.mustache', 'templates/site-head.mustache'],
+        src: ['source/html/banner.mustache', 'source/html/footer.mustache', 'source/html/head.mustache'],
         dest: 'build/'
     },
     font: {
@@ -90,8 +86,8 @@ function otherCSSFiles(cb) {
 var css = parallel(bootstrapCSS, fontawesome, autocompleteCSS, otherCSSFiles);
 
 function testHTMLPage() {
-    var header = fs.readFileSync('source/html/banner.html');
-    var footer = fs.readFileSync('source/html/footer.html');
+    var header = fs.readFileSync('source/html/banner.mustache');
+    var footer = fs.readFileSync('source/html/footer.mustache');
     return src('source/html/testTemplate.html')
         .pipe(replace('HEADER_HERE', header))
         .pipe(replace('FOOTER_HERE', footer))
@@ -107,17 +103,7 @@ function testHTMLPage() {
         .pipe(replace(/==profileURL==/g, buildvars.profileURL))
         .pipe(replace(/==fathomID==/g, buildvars.fathomID))
         .pipe(rename('testPage.html'))
-        .pipe(dest(paths.html.dest));
-};
-
-function html(cb) {
-    src(paths.html.src)
-        .pipe(replace(/==homeDomain==/g, buildvars.homeDomain))
-        .pipe(replace(/==signUpURL==/g, buildvars.signUpURL))
-        .pipe(replace(/==profileURL==/g, buildvars.profileURL))
-        .pipe(replace(/==fathomID==/g, buildvars.fathomID))
-        .pipe(dest(paths.html.dest));
-    cb();
+        .pipe(dest(paths.mustache.dest));
 };
 
 function mustache(cb) {
@@ -168,14 +154,13 @@ function otherJsFiles() {
 
 var js = parallel(jQuery, bootstrapJS, autocompleteJS, otherJsFiles);
 
-var build = parallel(css, testHTMLPage, html, mustache, font, js);
+var build = parallel(css, testHTMLPage, mustache, font, js);
 
 exports.otherCSSFiles = otherCSSFiles;
   
 exports.default = build;
 exports.css = css;
-exports.html = series([testHTMLPage, html]);
 exports.font = font;
 exports.js = js;
-exports.mustache = mustache;
+exports.mustache = series([testHTMLPage, mustache]);
 exports.build = build;
