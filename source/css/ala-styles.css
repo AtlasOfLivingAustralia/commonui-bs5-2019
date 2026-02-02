@@ -20,6 +20,13 @@ body.background-lightgrey {background-color:#f2f2f2;}
     border-color: #c44d34;
 }
 
+/* Headings
+================================= */
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    text-decoration: none;
+}
+
 /* Breadcrumb
 ================================= */
 section#breadcrumb {padding: 12px 0 15px 19px;border-bottom: 1px solid #E7E7E7;background-color: #E7E7E7;}
