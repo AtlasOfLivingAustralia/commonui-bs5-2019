@@ -58,6 +58,9 @@ section#breadcrumb li + li::before {
 .card-ala-light .btn-outline-dark {
     background-color: white;
 }
+.card-ala-light .btn-outline-dark:hover {
+    background-color: #212529;
+}
 
 /* table of contents floating div */
 .toc-floating-menu.affix {position: static;}
