@@ -89,6 +89,11 @@ body.background-lightgrey {background-color:#f2f2f2;}
     --bs-btn-active-border-color: #b51f2e;
 }
 
+/* btn-sm: match BS3 border-radius of 3px; BS5 uses --bs-border-radius-sm = 0.25rem (4px) */
+.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .gform_button {
+    --bs-btn-border-radius: 3px;
+}
+
 /* BS3 applied focus ring on :focus (mouse + keyboard); BS5 restricts to :focus-visible (keyboard only).
    Re-add :focus so the native browser focus ring appears, matching BS3 behaviour. */
 .btn:focus, .gform_button:focus, .btn.focus, .focus.gform_button, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
