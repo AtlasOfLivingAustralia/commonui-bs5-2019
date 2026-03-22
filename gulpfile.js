@@ -39,81 +39,154 @@ var paths = {
 };
 
 
-function bootstrapCSS(cb) {
-
+function bootstrapCSS() {
     const bootstrapCSSSource = paths.styles["boostrap-ala"];
     const bootstrapCSSDest = paths.styles.dest;
-    //console.log('src: ' + bootstrapCSSSource);
-    //console.log('dest: ' + bootstrapCSSDest);
+    // Write unminified first (separate src so both outputs are always fresh)
     src(bootstrapCSSSource)
+        .pipe(gulpSass({precision: 9}).on('error', gulpSass.logError))
+        .pipe(rename('bootstrap.css'))
+        .pipe(dest(bootstrapCSSDest));
+    return src(bootstrapCSSSource)
         .pipe(gulpSass({precision: 9}).on('error', gulpSass.logError))
         .pipe(cleanCSS())
         .pipe(rename('bootstrap.min.css'))
         .pipe(dest(bootstrapCSSDest));
-    cb();
 }
 
-function autocompleteCSS(cb) {
-    src(paths.styles.jqueryui)
+function autocompleteCSS() {
+    return src(paths.styles.jqueryui)
         .pipe(rename('autocomplete.css'))
         .pipe(dest(paths.styles.dest))
         .pipe(cleanCSS())
         .pipe(rename('autocomplete.min.css'))
         .pipe(dest(paths.styles.dest));
-    cb();
 }
 
-function fontawesome(cb) {
-    src(paths.styles["font-awesome"])
+function fontawesome() {
+    return src(paths.styles["font-awesome"])
         .pipe(gulpSass({precision: 9}).on('error', gulpSass.logError))
         .pipe(rename('font-awesome.css'))
         .pipe(dest(paths.styles.dest))
         .pipe(cleanCSS())
         .pipe(rename('font-awesome.min.css'))
         .pipe(dest(paths.styles.dest));
-    cb();
 }
 
-function otherCSSFiles(cb) {
-    src(paths.styles.dependencycss)
+function otherCSSFiles() {
+    return src(paths.styles.dependencycss)
         .pipe(dest(paths.styles.dest))
         .pipe(cleanCSS())
         .pipe(rename({extname: '.min.css'}))
         .pipe(dest(paths.styles.dest));
-    cb();
 }
 
 var css = parallel(bootstrapCSS, fontawesome, autocompleteCSS, otherCSSFiles);
 
+function applyMustache(content, vars) {
+    Object.keys(vars).forEach(function(key) {
+        content = content.split('{{' + key + '}}').join(vars[key] != null ? String(vars[key]) : '');
+    });
+    content = content.split('==homeDomain==').join(buildvars.homeDomain);
+    content = content.split('==signUpURL==').join(buildvars.signUpURL);
+    content = content.split('==profileURL==').join(buildvars.profileURL);
+    content = content.split('==fathomID==').join(buildvars.fathomID);
+    return content;
+}
+
+// Shared test values
+var TEST_HEADER_FOOTER_SERVER = 'https://www-test.ala.org.au/commonui-bs5-2019/';
+var TEST_SEARCH_SERVER        = 'https://bie.ala.org.au';
+var TEST_SEARCH_PATH          = '/search';
+var TEST_LOGIN_URL            = 'https://auth-test.ala.org.au/cas/login?service=https%3A%2F%2Ftest.ala.org.au%2F';
+var TEST_LOGOUT_URL           = 'https://auth-test.ala.org.au/cas/logout';
+var TEST_PROFILE_URL          = buildvars.profileURL;
+
+// The four rendering combinations
+var VARIANTS = [
+    { name: 'container-signedOut',   containerClass: 'container',       loginStatus: 'signedOut', loggedIn: false, loggedOut: true  },
+    { name: 'container-signedIn',    containerClass: 'container',       loginStatus: 'signedIn',  loggedIn: true,  loggedOut: false },
+    { name: 'fluid-signedOut',       containerClass: 'container-fluid', loginStatus: 'signedOut', loggedIn: false, loggedOut: true  },
+    { name: 'fluid-signedIn',        containerClass: 'container-fluid', loginStatus: 'signedIn',  loggedIn: true,  loggedOut: false },
+];
+
+function buildMustacheVars(variant) {
+    return {
+        headerFooterServer : TEST_HEADER_FOOTER_SERVER,
+        centralServer      : buildvars.homeDomain,
+        searchServer       : TEST_SEARCH_SERVER,
+        searchPath         : TEST_SEARCH_PATH,
+        containerClass     : variant.containerClass,
+        loginURL           : TEST_LOGIN_URL,
+        logoutURL          : TEST_LOGOUT_URL,
+        myProfileURL       : TEST_PROFILE_URL,
+        editAccountLink    : TEST_PROFILE_URL,
+        loginStatus        : variant.loginStatus,
+        loggedIn           : variant.loggedIn,
+        loggedOut          : variant.loggedOut,
+        fathomID           : buildvars.fathomID
+    };
+}
+
+/**
+ * Render standalone banner-*.html and footer-*.html files for each variant.
+ */
+function testHTMLVariants(cb) {
+    var bannerTemplate = fs.readFileSync('source/html/banner.mustache', 'utf8');
+    var footerTemplate = fs.readFileSync('source/html/footer.mustache', 'utf8');
+
+    VARIANTS.forEach(function(variant) {
+        var vars = buildMustacheVars(variant);
+        fs.writeFileSync(
+            'build/banner-' + variant.name + '.html',
+            applyMustache(bannerTemplate, vars)
+        );
+        fs.writeFileSync(
+            'build/footer-' + variant.name + '.html',
+            applyMustache(footerTemplate, vars)
+        );
+    });
+    cb();
+}
+
 function testHTMLPage() {
-    var header = fs.readFileSync('source/html/banner.mustache');
-    var footer = fs.readFileSync('source/html/footer.mustache');
+    var bannerTemplate = fs.readFileSync('source/html/banner.mustache', 'utf8');
+    var footerTemplate = fs.readFileSync('source/html/footer.mustache', 'utf8');
+
+    // Render all 4 banner+footer combinations
+    var renderedVariants = VARIANTS.map(function(variant) {
+        var vars = buildMustacheVars(variant);
+        return {
+            name:   variant.name,
+            banner: applyMustache(bannerTemplate, vars),
+            footer: applyMustache(footerTemplate, vars)
+        };
+    });
+
     return src('source/html/testTemplate.html')
-        .pipe(replace('HEADER_HERE', header))
-        .pipe(replace('FOOTER_HERE', footer))
-        .pipe(replace(/::containerClass::/g, 'container-fluid'))
-        .pipe(replace(/::headerFooterServer::/g, 'https://www-test.ala.org.au/commonui-bs5-2019/'))
-        .pipe(replace(/::loginStatus::/g, 'signedOut'))
-        .pipe(replace(/::loginURL::/g, 'https://auth.ala.org.au/cas/login'))
-        .pipe(replace(/::logoutURL::/g, 'https://auth.ala.org.au/cas/logout'))
-        .pipe(replace(/::searchServer::/g, 'https://bie.ala.org.au'))
-        .pipe(replace(/::searchPath::/g, '/search'))
+        .pipe(replace('VARIANT_CONTAINER_SIGNEDOUT_HEADER', renderedVariants[0].banner))
+        .pipe(replace('VARIANT_CONTAINER_SIGNEDIN_HEADER',  renderedVariants[1].banner))
+        .pipe(replace('VARIANT_FLUID_SIGNEDOUT_HEADER',     renderedVariants[2].banner))
+        .pipe(replace('VARIANT_FLUID_SIGNEDIN_HEADER',      renderedVariants[3].banner))
+        .pipe(replace('VARIANT_CONTAINER_SIGNEDOUT_FOOTER', renderedVariants[0].footer))
+        .pipe(replace('VARIANT_CONTAINER_SIGNEDIN_FOOTER',  renderedVariants[1].footer))
+        .pipe(replace('VARIANT_FLUID_SIGNEDOUT_FOOTER',     renderedVariants[2].footer))
+        .pipe(replace('VARIANT_FLUID_SIGNEDIN_FOOTER',      renderedVariants[3].footer))
         .pipe(replace(/==homeDomain==/g, buildvars.homeDomain))
-        .pipe(replace(/==signUpURL==/g, buildvars.signUpURL))
+        .pipe(replace(/==signUpURL==/g,  buildvars.signUpURL))
         .pipe(replace(/==profileURL==/g, buildvars.profileURL))
-        .pipe(replace(/==fathomID==/g, buildvars.fathomID))
+        .pipe(replace(/==fathomID==/g,   buildvars.fathomID))
         .pipe(rename('testPage.html'))
         .pipe(dest(paths.mustache.dest));
 };
 
-function mustache(cb) {
-    src(paths.mustache.src)
+function mustache() {
+    return src(paths.mustache.src)
         .pipe(replace(/==homeDomain==/g, buildvars.homeDomain))
         .pipe(replace(/==signUpURL==/g, buildvars.signUpURL))
         .pipe(replace(/==profileURL==/g, buildvars.profileURL))
         .pipe(replace(/==fathomID==/g, buildvars.fathomID))
         .pipe(dest(paths.mustache.dest));
-    cb();
 };
 
 function font() {
@@ -121,12 +194,11 @@ function font() {
         .pipe(dest(paths.font.dest));
 }
 
-function jQuery(cb) {
-    src(paths.js.jquery)
+function jQuery() {
+    return src(paths.js.jquery)
         .pipe(uglify({output: {comments: '/^!/'}}))
         .pipe(rename('jquery.min.js'))
         .pipe(dest(paths.js.dest));
-    cb();
 }
 
 function bootstrapJS() {
@@ -154,13 +226,13 @@ function otherJsFiles() {
 
 var js = parallel(jQuery, bootstrapJS, autocompleteJS, otherJsFiles);
 
-var build = parallel(css, testHTMLPage, mustache, font, js);
+var build = parallel(css, series(testHTMLVariants, testHTMLPage), mustache, font, js);
 
 exports.otherCSSFiles = otherCSSFiles;
-  
+
 exports.default = build;
 exports.css = css;
 exports.font = font;
 exports.js = js;
-exports.mustache = series([testHTMLPage, mustache]);
+exports.mustache = series([testHTMLVariants, testHTMLPage, mustache]);
 exports.build = build;
