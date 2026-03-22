@@ -12,6 +12,35 @@ body.background-lightgrey {background-color:#f2f2f2;}
 .no-gutter>[class*='col-']{padding-right:0;padding-left:0;}
 .col-centered{float:none;margin:0 auto;}
 
+/* Match BS3 .row margins: BS3 uses -15px / 15px gutters; BS5 default is -12px / 12px (1.5rem gutter).
+   Override --bs-gutter-x to 1.875rem (30px) so calc(-0.5 * 30px) = -15px each side. */
+.row {
+    --bs-gutter-x: 1.875rem;
+}
+
+/* Match BS3 container/container-fluid padding: BS3 uses 15px each side; BS5 default is 12px (0.75rem).
+   Override --bs-gutter-x to 1.875rem (30px) so calc(0.5 * 30px) = 15px each side. */
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+    --bs-gutter-x: 1.875rem;
+}
+
+/* BS5 applies gutter padding to all .row > * children; BS3 only applies it to .col-* children.
+   Reset padding on non-col direct children, then re-apply only to col-* children. */
+.row > * {
+    padding-right: 0;
+    padding-left: 0;
+}
+.row > [class*="col-"], .row > .col {
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+}
+
 /* Buttons
 ================================= */
 
