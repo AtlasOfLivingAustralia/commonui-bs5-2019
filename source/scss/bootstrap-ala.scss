@@ -35,12 +35,7 @@ $body-bg:               #fff !default;
 //** Global text color on `<body>`.
 $text-color:            $gray-darker !default;
 
-//** Global textual link color.
-$link-color:            #c44d34 !default;
-//** Link hover color set via `darken()` function.
-$link-hover-color:      darken($link-color, 15%) !default;
-//** Link hover decoration.
-$link-hover-decoration: underline !default;
+//** Global textual link color — set authoritatively before the Bootstrap @import below.
 
 
 //== Typography
@@ -162,9 +157,17 @@ $h4-font-size:      1.125rem; // 18px
 $h5-font-size:      0.875rem; // 14px
 $h6-font-size:      0.75rem;  // 12px
 
+// Links: match BS3  a { color: #c44d34; text-decoration: none }
+//        and BS3  a:hover, a:focus { text-decoration: underline } (explicit because $link-decoration is none)
+$link-color:             #c44d34;
+$link-decoration:        none;
+$link-hover-decoration:  underline;
+// $link-hover-color is computed by BS5 as shift-color($link-color) → ~#883524, matching BS3 darken(15%)
+
 @import "../vendor/bootstrap/scss/bootstrap.scss";
 @import "./old-theme/child_theme_variables";
 @import "./old-theme/child_theme";
+
 
 #wrapper-navbar {
   @import "./old-theme/partials/header";
