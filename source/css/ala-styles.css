@@ -14,10 +14,57 @@ body.background-lightgrey {background-color:#f2f2f2;}
 
 /* Buttons
 ================================= */
-.btn-primary {
-    background-color: #c44d34;
-    color: white;
-    border-color: #c44d34;
+
+/* btn-primary: match BS3 (#c44d34 bg, white text; darken on hover/focus/active) */
+.btn-primary, .gform_button {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #c44d34;
+    --bs-btn-border-color: #c44d34;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #9c3d29;
+    --bs-btn-hover-border-color: #943a27;
+    --bs-btn-focus-shadow-rgb: 156, 61, 41;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #9c3d29;
+    --bs-btn-active-border-color: #943a27;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #c44d34;
+    --bs-btn-disabled-border-color: #c44d34;
+}
+
+/* btn-outline-dark: match BS3 btn-default (white bg, black text, #999 border; grey on hover/active) */
+.btn-outline-dark {
+    --bs-btn-color: #000;
+    --bs-btn-bg: #fff;
+    --bs-btn-border-color: #999;
+    --bs-btn-hover-color: #000;
+    --bs-btn-hover-bg: #e6e6e6;
+    --bs-btn-hover-border-color: #7a7a7a;
+    --bs-btn-focus-shadow-rgb: 130, 138, 145;
+    --bs-btn-active-color: #000;
+    --bs-btn-active-bg: #e6e6e6;
+    --bs-btn-active-border-color: #7a7a7a;
+    --bs-btn-disabled-color: #000;
+    --bs-btn-disabled-bg: #fff;
+    --bs-btn-disabled-border-color: #999;
+}
+
+/* btn-danger: match BS3 darken states (#bd2130 hover/active, #b51f2e border) */
+.btn-danger {
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #bd2130;
+    --bs-btn-hover-border-color: #b51f2e;
+    --bs-btn-focus-shadow-rgb: 225, 83, 97;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #bd2130;
+    --bs-btn-active-border-color: #b51f2e;
+}
+
+/* BS3 applied focus ring on :focus (mouse + keyboard); BS5 restricts to :focus-visible (keyboard only).
+   Re-add :focus so the native browser focus ring appears, matching BS3 behaviour. */
+.btn:focus, .gform_button:focus, .btn.focus, .focus.gform_button, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
 }
 
 /* Headings
@@ -50,12 +97,6 @@ section#breadcrumb li + li::before {
     background-color: #f5f5f5;
     border: 1px solid #e3e3e3;
     border-radius: 4px;
-}
-.card-ala-light .btn-outline-dark {
-    background-color: white;
-}
-.card-ala-light .btn-outline-dark:hover {
-    background-color: #212529;
 }
 
 /* table of contents floating div */
