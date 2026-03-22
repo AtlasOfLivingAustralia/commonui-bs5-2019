@@ -135,14 +135,16 @@ $headings-font-family: 'Lato', sans-serif;
 $headings-font-weight: 700;
 $headings-line-height: 1.2;
 
-$font-size-base: .875rem;
-
-$h1-font-size: $font-size-base * 3 !default;
-$h2-font-size: $font-size-base * 2 !default;
-$h3-font-size: $font-size-base * 1.75 !default;
-$h4-font-size: $font-size-base * 1.285 !default;
-$h5-font-size: $font-size-base * 1.1 !default;
-$h6-font-size: $font-size-base !default;
+// $font-size-base is set to 0.875rem (14px) before the Bootstrap @import in bootstrap-ala.scss.
+// Heading sizes below match the original BS3 pixel values converted to rem (1rem = 16px browser default):
+// h1=36px, h2=30px, h3=24px, h4=18px, h5=14px, h6=12px
+$font-size-base: 0.875rem;  // 14px
+$h1-font-size:   2.25rem;   // 36px
+$h2-font-size:   1.875rem;  // 30px
+$h3-font-size:   1.5rem;    // 24px
+$h4-font-size:   1.125rem;  // 18px
+$h5-font-size:   0.875rem;  // 14px
+$h6-font-size:   0.75rem;   // 12px
 
 $link-color: $primary-dark;
 $link-decoration: underline;
