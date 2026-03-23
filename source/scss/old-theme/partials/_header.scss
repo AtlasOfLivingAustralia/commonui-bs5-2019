@@ -19,6 +19,7 @@ $background-color-header: rgba(0,0,0,0.85) !important;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
   }
 
   > .header-logo-menu:after,
@@ -38,6 +39,8 @@ $background-color-header: rgba(0,0,0,0.85) !important;
     > .header-logo-menu {
       flex-wrap: nowrap;
       display: block;
+      padding-left: 0;
+      padding-right: 0;
 
       .navbar-brand {
         display: flex;
@@ -145,10 +148,11 @@ $background-color-header: rgba(0,0,0,0.85) !important;
     }
   }
   #navbarOuterWrapper {
+    display: flex;
     flex-direction: column;
     align-items: flex-end;
   }
-  &.navbar-expand-md {
+  &.navbar-expand-lg {
     .navbar-nav {
       .nav-link {
           padding: 8px;
@@ -157,13 +161,25 @@ $background-color-header: rgba(0,0,0,0.85) !important;
     }
   }
 
-  .navbar-toggle {
+  .navbar-toggle,
+  .mobile-nav-toggle {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border: 0px;
     background-color: transparent;
-    margin: 4px 8px 4px 8px;
+    margin: 4px 0 4px 4px;
     padding: 2px 0 2px 0;
     height: 37px;
-    width: 41px;
+    width: 30px;
+    cursor: pointer;
+
+    svg path {
+      transition: all 150ms ease;
+      fill: #fff;
+    }
 
     .horizontal-line {
       height: 2px;
@@ -171,16 +187,20 @@ $background-color-header: rgba(0,0,0,0.85) !important;
       border: 1px solid white;
       border-radius: 1px;
       background-color: white;
-      margin-bottom: 4px;
+      margin: 0;
     }
 
-    .horizontal-line:first-child {
+    .horizontal-line + .horizontal-line {
       margin-top: 4px;
     }
 
     &:hover .horizontal-line, &:focus .horizontal-line {
       background-color: $primary;
       border-color: $primary;
+    }
+
+    &:hover svg path, &:focus svg path {
+      fill: $primary;
     }
   }
 
@@ -253,6 +273,7 @@ $background-color-header: rgba(0,0,0,0.85) !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex: 0 0 auto;
     margin-right: 0;
     margin-left: 0;
   }
@@ -296,13 +317,42 @@ $background-color-header: rgba(0,0,0,0.85) !important;
 .main-nav-wrapper {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: flex-end;
+  width: 100%;
+  min-width: 0;
 }
 
 #navbarNavDropdown {
+  flex: 1 1 auto;
+  min-width: 0;
   margin-right: 20px;
   padding-right: 20px;
   border-right: 1px solid rgba(255,255,255,0.4);
+}
+
+@include media-breakpoint-up(lg) {
+  .navbar {
+    > .header-logo-menu {
+      flex-wrap: nowrap;
+    }
+
+    #navbarOuterWrapper {
+      flex: 1 1 auto;
+      min-width: 0;
+      margin-left: auto;
+    }
+
+    #navbarNavDropdown {
+      .navbar-nav {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-content: flex-end;
+        row-gap: 0.25rem;
+      }
+    }
+  }
 }
 
 .search-trigger, .account-mobile, .search-submit {
@@ -379,6 +429,69 @@ $background-color-header: rgba(0,0,0,0.85) !important;
 }
 
 @include media-breakpoint-down(lg){
+  .navbar {
+    overflow-x: hidden;
+
+    > .header-logo-menu,
+    .navbar-header,
+    .navbar-header > .display-flex {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    #navbarOuterWrapper {
+      display: block;
+      width: 100%;
+    }
+
+    .top-bar {
+      display: none !important;
+    }
+
+    .main-nav-wrapper {
+      display: block;
+      width: 100%;
+    }
+
+    #navbarNavDropdown {
+      width: 100%;
+      margin-right: 0;
+      padding-right: 0;
+      border-right: none;
+    }
+
+    #navbarNavDropdown.show,
+    #navbarNavDropdown.collapsing {
+      margin-top: 0.75rem;
+    }
+
+    #navbarNavDropdown .navbar-nav {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      margin-top: 0;
+    }
+
+    #navbarNavDropdown .nav-item,
+    #navbarNavDropdown .nav-link {
+      width: 100%;
+    }
+
+    #navbarNavDropdown .dropdown-menu {
+      position: static;
+      float: none;
+      width: auto;
+      margin-top: 0;
+      border: 0;
+      box-shadow: none;
+    }
+
+    #navbarNavDropdown .dropdown-item,
+    #navbarNavDropdown .dropdown-header {
+      padding: 5px 15px 5px 25px;
+    }
+  }
+
   .site {
     position: relative;
     right: 0;
