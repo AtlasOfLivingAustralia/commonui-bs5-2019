@@ -81,6 +81,46 @@ body.background-lightgrey {background-color:#f2f2f2;}
     --bs-btn-disabled-border-color: #c44d34;
 }
 
+/* footer btn-primary: matches the navbar orange (#f26649), not the default dark red */
+footer .btn-primary, footer .gform_button {
+    --bs-btn-color: #212121;
+    --bs-btn-bg: #f26649;
+    --bs-btn-border-color: #f26649;
+    --bs-btn-hover-color: #212121;
+    --bs-btn-hover-bg: #ef4825;
+    --bs-btn-hover-border-color: #ef3e19;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #ef3e19;
+    --bs-btn-active-border-color: #eb3611;
+    --bs-btn-disabled-color: #212121;
+    --bs-btn-disabled-bg: #f26649;
+    --bs-btn-disabled-border-color: #f26649;
+}
+
+/* footer btn-outline-light: explicitly scoped to match the navbar header values */
+footer .btn-outline-light {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: #fff;
+    --bs-btn-hover-color: #212121;
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: #fff;
+    --bs-btn-active-color: #212121;
+    --bs-btn-active-bg: #fff;
+    --bs-btn-active-border-color: #fff;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #fff;
+}
+
+/* footer button padding: match navbar context (5px 30px base, 4px 18px for btn-sm) */
+footer .btn, footer .gform_button {
+    padding: 5px 30px;
+}
+footer .btn-sm, footer .btn-group-sm > .btn, footer .btn-group-sm > .gform_button {
+    padding: 4px 18px;
+}
+
 /* btn-outline-dark: match BS3 btn-default (white bg, black text, #999 border; grey on hover/active) */
 .btn-outline-dark {
     --bs-btn-color: #000;
@@ -112,6 +152,55 @@ body.background-lightgrey {background-color:#f2f2f2;}
 /* btn-sm: match BS3 border-radius of 3px; BS5 uses --bs-border-radius-sm = 0.25rem (4px) */
 .btn-sm, .btn-group-sm > .btn, .btn-group-sm > .gform_button {
     --bs-btn-border-radius: 3px;
+}
+
+/* btn-outline-light: used in navbar and footer on dark backgrounds.
+   BS3 had this class; BS5 only has btn-outline-light which uses grey (#ced4da) instead of white. */
+.btn-outline-light {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: #fff;
+    --bs-btn-hover-color: #212121;
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: #fff;
+    --bs-btn-focus-shadow-rgb: 255, 255, 255;
+    --bs-btn-active-color: #212121;
+    --bs-btn-active-bg: #fff;
+    --bs-btn-active-border-color: #fff;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #fff;
+}
+
+/* Footer button focus box-shadows: match BS3 #wrapper-navbar>nav / footer context rules.
+   The navbar equivalents live in _header.scss; footer is styled here. */
+footer .btn:focus, footer .gform_button:focus, footer .btn.focus, footer .focus.gform_button {
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(242, 102, 73, .25);
+}
+footer .btn-primary:focus, footer .btn-primary.focus {
+    box-shadow: 0 0 0 .2rem rgba(242, 102, 73, .5);
+}
+footer .btn-outline-light:focus, footer .btn-outline-light.focus {
+    box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .5);
+}
+footer .btn-outline-dark:focus, footer .btn-outline-dark.focus {
+    box-shadow: 0 0 0 .2rem rgba(130, 138, 145, .5);
+}
+footer .btn-secondary:focus, footer .btn-secondary.focus {
+    box-shadow: 0 0 0 .2rem rgba(99, 112, 115, .5);
+}
+footer .btn-success:focus, footer .btn-success.focus {
+    box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .5);
+}
+footer .btn-info:focus, footer .btn-info.focus {
+    box-shadow: 0 0 0 .2rem rgba(23, 162, 184, .5);
+}
+footer .btn-warning:focus, footer .btn-warning.focus {
+    box-shadow: 0 0 0 .2rem rgba(255, 193, 7, .5);
+}
+footer .btn-danger:focus, footer .btn-danger.focus {
+    box-shadow: 0 0 0 .2rem rgba(220, 53, 69, .5);
 }
 
 /* BS3 applied focus ring on :focus (mouse + keyboard); BS5 restricts to :focus-visible (keyboard only).

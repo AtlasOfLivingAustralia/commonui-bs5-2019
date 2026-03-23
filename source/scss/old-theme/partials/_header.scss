@@ -75,10 +75,35 @@ $background-color-header: rgba(0,0,0,0.85) !important;
     }
   }
   .navbar-nav{
+    // BS3 navbar dropdown: no top radius, square corners flush with nav bar
+    .dropdown-menu {
+      --bs-dropdown-border-radius: 0;
+      --bs-dropdown-padding-y: 5px;
+      --bs-dropdown-font-size: 14px;
+      --bs-dropdown-border-color: rgba(0, 0, 0, .15);
+      --bs-dropdown-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+      --bs-dropdown-link-color: #343a40;
+      --bs-dropdown-link-hover-color: #292d32;
+      --bs-dropdown-link-hover-bg: #f2f2f2;
+      --bs-dropdown-item-padding-y: 3px;
+      --bs-dropdown-item-padding-x: 20px;
+      margin-top: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    }
+
     .nav-link {
       position: relative;
       text-decoration: none;
       font-size: 18px;
+
+      // Override the global nav-link:hover background (grey for tabs/pills)
+      // — navbar links sit on a dark background so must stay transparent.
+      &:hover, &:focus {
+        background-color: transparent;
+      }
+
       &:before {
         content: '';
         display: block;
@@ -97,11 +122,22 @@ $background-color-header: rgba(0,0,0,0.85) !important;
         }
       }
     }
+
+    // BS3 used a 4px .caret at vertical-align: middle.
+    // BS5 .dropdown-toggle::after is 0.3em and sits high (vertical-align: 0.255em).
+    .dropdown-toggle::after {
+      border-top-width: 4px;
+      border-right-width: 4px;
+      border-left-width: 4px;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
     .dropdown-item {
       text-decoration: none;
     }
 
-    .menu-item:hover, .current-menu-item, .current-menu-parent {
+    .menu-item:hover, .current-menu-item, .current-menu-parent,
+    .nav-item:hover, .nav-item.show {
       > .nav-link:before {
         left: 0;
         width: 100%;
@@ -477,6 +513,47 @@ form.search-form {
 }
 
 &>nav {
+  // BS3 applied wider padding to all buttons inside the navbar
+  .btn, .gform_button {
+    padding: 5px 30px;
+    line-height: 20px;
+  }
+
+  // btn-sm inside the navbar keeps the compact sm padding
+  .btn-sm, .btn-group-sm > .btn, .btn-group-sm > .gform_button {
+    padding: 4px 18px;
+    line-height: 20px;
+  }
+
+  // BS3 btn-primary colour/shadow inside the navbar differs from the global definition
+  .btn-primary, .gform_button {
+    --bs-btn-color: #212121;
+    --bs-btn-bg: #f26649;
+    --bs-btn-border-color: #f26649;
+    --bs-btn-hover-color: #212121;
+    --bs-btn-hover-bg: #ef4825;
+    --bs-btn-hover-border-color: #ef3e19;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #ef3e19;
+    --bs-btn-active-border-color: #eb3611;
+    --bs-btn-disabled-color: #212121;
+    --bs-btn-disabled-bg: #f26649;
+    --bs-btn-disabled-border-color: #f26649;
+    --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+  }
+
+  // BS3 focus box-shadows for buttons inside the navbar
+  .btn:focus, .gform_button:focus, .btn.focus, .focus.gform_button {
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(242, 102, 73, .25);
+  }
+  .btn-primary:focus, .btn-primary.focus {
+    box-shadow: 0 0 0 .2rem rgba(242, 102, 73, .5);
+  }
+  .btn-outline-light:focus, .btn-outline-light.focus {
+    box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .5);
+  }
+
   .account-mobile {
     display: flex;
   }

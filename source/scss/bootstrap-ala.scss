@@ -150,6 +150,7 @@ $icon-font-path: "../fonts/";
 //== Typography: match BS3 pixel sizes expressed as rem (browser default 1rem = 16px)
 // BS3 body was 14px; headings were: h1=36px, h2=30px, h3=24px, h4=18px, h5=14px, h6=12px
 $font-size-base:    0.875rem; // 14px
+$line-height-base:  1.4286;   // 20px (20 / 14)
 $h1-font-size:      2.25rem;  // 36px
 $h2-font-size:      1.875rem; // 30px
 $h3-font-size:      1.5rem;   // 24px
