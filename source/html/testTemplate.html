@@ -2,19 +2,29 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/ala-styles.min.css">
     <link rel="stylesheet" href="css/autocomplete.min.css">
     <link rel="stylesheet" href="css/autocomplete-extra.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/autocomplete.min.js"></script>
     <script src="js/application.js"></script>
+    <style>
+        .variant-label { background:#212121; color:#fff; font-family:monospace; font-size:13px; padding:6px 12px; margin:0; }
+        .variant-divider { border:3px solid #f26649; margin:0; }
+    </style>
 </head>
 <body>
-HEADER_HERE
+
+<!-- VARIANT 1: container / signedOut -->
+<p class="variant-label">&#9658; Variant 1: container / signedOut</p>
+<hr class="variant-divider">
+VARIANT_CONTAINER_SIGNEDOUT_HEADER
 <section id="breadcrumb">
     <div class="container">
         <div class="row">
@@ -26,80 +36,328 @@ HEADER_HERE
     </div>
 </section>
 <div class="wrapper" id="full-width-page-wrapper">
-
-	<div class="container" id="content">
-
-		<div class="row">
-
-			<div class="col-md-12 content-area" id="primary">
-
-				<main class="site-main" id="main" role="main">
-
-<article class="post-166 page type-page status-publish hentry" id="post-166">
-	
-	<div class="entry-content">
-		
-<h2 class="wp-block-heading" id="what-is-the-ala">Heading h2<br></h2>
-
-<p>Paragraph text p: Example text here with <a href="randomPage">an inline link</a>. </p>
-
-<p>Paragraph text p: Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem. </p>
-
-<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
-
-<h3 class="wp-block-heading" id="our-users">Heading h3: List</h3>
-
-<p>Intro p for list:</p>
-
-<ul><li>Basic list item</li>
-    <li>Basic list item with <a href="randomPage">link in the text</a></li>
-    <li>Basic list item</li>
-    <li>Basic list item with longer line length: Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis</li>
-</ul>
-
-<h4>Heading h4: Buttons</h4>
-    <p><button type="button" class="btn btn-primary">button.btn.btn-primary</button></p>
-    <p><button type="button" class="btn btn-outline-dark">button.btn.btn-outline-dark</button></p>
-    <p><button type="button" class="btn btn-danger">button.btn.btn-danger</button></p>
-
-    <div class="card card-ala-light">
-          <div class="card-body">
-            <h4>.card.card-ala-light .card-body h4</h4>
-        
-            <p>p: Example text here with <a href="randomPage">an inline link</a>. </p>
-
-            <p><button type="button" class="btn btn-outline-dark">button.btn.btn-outline-dark</button></p>
-          </div>
-        </div>
-
-<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
-
-                    <div class="content">
-                            <h4 id="update-your-details">
-                                <a href="randomPage">
-                                    Heading as a link: h4 a
-                                </a>
-                              </h4>
-                            <p>Paragraph text</p>
+    <div class="container" id="content">
+        <div class="row">
+            <div class="col-md-12 content-area" id="primary">
+                <main class="site-main" id="main" role="main">
+                    <article class="post-166 page type-page status-publish hentry" id="post-166">
+                        <div class="entry-content">
+                            <p>"class: entry-content" Paragraph text p: Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                                veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+                                voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                                dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+                                dolorem. </p>
                         </div>
-		
-	</div><!-- .entry-content -->
+                        <div>
+                            <h2 class="wp-block-heading" id="what-is-the-ala">Heading h2<br></h2>
 
-	<footer class="entry-footer">
-		
-	</footer><!-- .entry-footer -->
+                            <p>Paragraph text p: Example text here with <a href="randomPage">an inline link</a>. </p>
 
-</article><!-- #post-## -->
+                            <p>Paragraph text p: Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                                veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+                                voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                                dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+                                dolorem. </p>
 
-				</main><!-- #main -->
+                            <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
 
-			</div><!-- #primary -->
+                            <h3 class="wp-block-heading" id="our-users">Heading h3: List</h3>
 
-		</div><!-- .row end -->
+                            <p>Intro p for list:</p>
 
-	</div><!-- #content -->
+                            <ul>
+                                <li>Basic list item</li>
+                                <li>Basic list item with <a href="randomPage">link in the text</a></li>
+                                <li>Basic list item</li>
+                                <li>Basic list item with longer line length: Sed ut perspiciatis unde omnis iste natus
+                                    error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+                                    ipsa quae ab illo inventore veritatis
+                                </li>
+                            </ul>
 
+                            <h4>Heading h4: Buttons</h4>
+                            <p>
+                                <button type="button" class="btn btn-primary">button.btn.btn-primary</button>
+                            </p>
+                            <p>
+                                <button type="button" class="btn btn-outline-dark">button.btn.btn-outline-dark</button>
+                            </p>
+                            <p>
+                                <button type="button" class="btn btn-danger">button.btn.btn-danger</button>
+                            </p>
+
+                            <div class="card card-ala-light">
+                                <div class="card-body">
+                                    <h4>.card.card-ala-light .card-body h4</h4>
+                                    <p>p: Example text here with <a href="randomPage">an inline link</a>. </p>
+                                    <p>
+                                        <button type="button" class="btn btn-outline-dark">button.btn.btn-outline-dark</button>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+                            <div class="content">
+                                <h4 id="update-your-details">
+                                    <a href="randomPage">Heading as a link: h4 a</a>
+                                </h4>
+                                <p>Paragraph text</p>
+                            </div>
+
+                        </div><!-- .entry-content -->
+
+                        <footer class="entry-footer"></footer><!-- .entry-footer -->
+
+                    </article><!-- #post-## -->
+                </main><!-- #main -->
+            </div><!-- #primary -->
+        </div><!-- .row end -->
+    </div><!-- #content -->
 </div><!-- #full-width-page-wrapper -->
-FOOTER_HERE
+VARIANT_CONTAINER_SIGNEDOUT_FOOTER
+
+<!-- VARIANT 2: container / signedIn -->
+<p class="variant-label">&#9658; Variant 2: container / signedIn</p>
+<hr class="variant-divider">
+VARIANT_CONTAINER_SIGNEDIN_HEADER
+<section id="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <ul class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li class="active">Breadcrumb title</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<div class="wrapper">
+    <div class="container" id="content">
+        <div class="row">
+            <div class="col-md-12 content-area" id="primary">
+                <main class="site-main" id="main" role="main">
+                    <article>
+                        <div class="entry-content">
+                            <p>Signed-in variant — profile and logout links should be visible above.</p>
+                            <p>Paragraph text p: Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                                veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+                                voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                                dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+                                dolorem. </p>
+                        </div>
+                        <div>
+                            <h2 class="wp-block-heading">Heading h2</h2>
+
+                            <p>Paragraph text p: Example text here with <a href="randomPage">an inline link</a>. </p>
+
+                            <h3 class="wp-block-heading">Heading h3: List</h3>
+                            <p>Intro p for list:</p>
+                            <ul>
+                                <li>Basic list item</li>
+                                <li>Basic list item with <a href="randomPage">link in the text</a></li>
+                                <li>Basic list item</li>
+                                <li>Basic list item with longer line length: Sed ut perspiciatis unde omnis iste natus
+                                    error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+                                    ipsa quae ab illo inventore veritatis
+                                </li>
+                            </ul>
+
+                            <h4>Heading h4: Buttons</h4>
+                            <p>
+                                <button type="button" class="btn btn-primary">button.btn.btn-primary</button>
+                            </p>
+                            <p>
+                                <button type="button" class="btn btn-outline-dark">button.btn.btn-outline-dark</button>
+                            </p>
+                            <p>
+                                <button type="button" class="btn btn-danger">button.btn.btn-danger</button>
+                            </p>
+
+                            <div class="card card-ala-light">
+                                <div class="card-body">
+                                    <h4>.card.card-ala-light .card-body h4</h4>
+                                    <p>p: Example text here with <a href="randomPage">an inline link</a>. </p>
+                                    <p>
+                                        <button type="button" class="btn btn-outline-dark">button.btn.btn-outline-dark</button>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <h4><a href="randomPage">Heading as a link: h4 a</a></h4>
+                                <p>Paragraph text</p>
+                            </div>
+                        </div>
+                    </article>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
+VARIANT_CONTAINER_SIGNEDIN_FOOTER
+
+<!-- VARIANT 3: container-fluid / signedOut -->
+<p class="variant-label">&#9658; Variant 3: container-fluid / signedOut</p>
+<hr class="variant-divider">
+VARIANT_FLUID_SIGNEDOUT_HEADER
+<section id="breadcrumb">
+    <div class="container-fluid">
+        <div class="row">
+            <ul class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li class="active">Breadcrumb title</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<div class="wrapper">
+    <div class="container-fluid" id="content">
+        <div class="row">
+            <div class="col-md-12 content-area" id="primary">
+                <main class="site-main" id="main" role="main">
+                    <article>
+                        <div class="entry-content">
+                            <p>Fluid layout signed-out variant — navbar and search bar use full width.</p>
+                            <p>Paragraph text p: Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                                veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+                                voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                                dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+                                dolorem. </p>
+                        </div>
+                        <div>
+                            <h2 class="wp-block-heading">Heading h2</h2>
+
+                            <p>Paragraph text p: Example text here with <a href="randomPage">an inline link</a>. </p>
+
+                            <h3 class="wp-block-heading">Heading h3: List</h3>
+                            <p>Intro p for list:</p>
+                            <ul>
+                                <li>Basic list item</li>
+                                <li>Basic list item with <a href="randomPage">link in the text</a></li>
+                                <li>Basic list item</li>
+                                <li>Basic list item with longer line length: Sed ut perspiciatis unde omnis iste natus
+                                    error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+                                    ipsa quae ab illo inventore veritatis
+                                </li>
+                            </ul>
+
+                            <h4>Heading h4: Buttons</h4>
+                            <p>
+                                <button type="button" class="btn btn-primary">button.btn.btn-primary</button>
+                            </p>
+                            <p>
+                                <button type="button" class="btn btn-outline-dark">button.btn.btn-outline-dark</button>
+                            </p>
+                            <p>
+                                <button type="button" class="btn btn-danger">button.btn.btn-danger</button>
+                            </p>
+
+                            <div class="card card-ala-light">
+                                <div class="card-body">
+                                    <h4>.card.card-ala-light .card-body h4</h4>
+                                    <p>p: Example text here with <a href="randomPage">an inline link</a>. </p>
+                                    <p>
+                                        <button type="button" class="btn btn-outline-dark">button.btn.btn-outline-dark</button>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <h4><a href="randomPage">Heading as a link: h4 a</a></h4>
+                                <p>Paragraph text</p>
+                            </div>
+                        </div>
+                    </article>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
+VARIANT_FLUID_SIGNEDOUT_FOOTER
+
+<!-- VARIANT 4: container-fluid / signedIn -->
+<p class="variant-label">&#9658; Variant 4: container-fluid / signedIn</p>
+<hr class="variant-divider">
+VARIANT_FLUID_SIGNEDIN_HEADER
+<section id="breadcrumb">
+    <div class="container-fluid">
+        <div class="row">
+            <ul class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li class="active">Breadcrumb title</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<div class="wrapper">
+    <div class="container-fluid" id="content">
+        <div class="row">
+            <div class="col-md-12 content-area" id="primary">
+                <main class="site-main" id="main" role="main">
+                    <article>
+                        <div class="entry-content">
+                            <p>Fluid layout signed-in variant — profile and logout links should be visible above.</p>
+                            <p>Paragraph text p: Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                                veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+                                voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                                dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+                                dolorem. </p>
+                        </div>
+                        <div>
+                            <h2 class="wp-block-heading">Heading h2</h2>
+
+                            <p>Paragraph text p: Example text here with <a href="randomPage">an inline link</a>. </p>
+
+                            <h3 class="wp-block-heading">Heading h3: List</h3>
+                            <p>Intro p for list:</p>
+                            <ul>
+                                <li>Basic list item</li>
+                                <li>Basic list item with <a href="randomPage">link in the text</a></li>
+                                <li>Basic list item</li>
+                                <li>Basic list item with longer line length: Sed ut perspiciatis unde omnis iste natus
+                                    error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+                                    ipsa quae ab illo inventore veritatis
+                                </li>
+                            </ul>
+
+                            <h4>Heading h4: Buttons</h4>
+                            <p>
+                                <button type="button" class="btn btn-primary">button.btn.btn-primary</button>
+                            </p>
+                            <p>
+                                <button type="button" class="btn btn-outline-dark">button.btn.btn-outline-dark</button>
+                            </p>
+                            <p>
+                                <button type="button" class="btn btn-danger">button.btn.btn-danger</button>
+                            </p>
+
+                            <div class="card card-ala-light">
+                                <div class="card-body">
+                                    <h4>.card.card-ala-light .card-body h4</h4>
+                                    <p>p: Example text here with <a href="randomPage">an inline link</a>. </p>
+                                    <p>
+                                        <button type="button" class="btn btn-outline-dark">button.btn.btn-outline-dark</button>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <h4><a href="randomPage">Heading as a link: h4 a</a></h4>
+                                <p>Paragraph text</p>
+                            </div>
+                        </div>
+                    </article>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
+VARIANT_FLUID_SIGNEDIN_FOOTER
+
 </body>
 </html>

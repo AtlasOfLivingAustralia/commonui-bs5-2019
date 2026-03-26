@@ -35,12 +35,7 @@ $body-bg:               #fff !default;
 //** Global text color on `<body>`.
 $text-color:            $gray-darker !default;
 
-//** Global textual link color.
-$link-color:            #c44d34 !default;
-//** Link hover color set via `darken()` function.
-$link-hover-color:      darken($link-color, 15%) !default;
-//** Link hover decoration.
-$link-hover-decoration: underline !default;
+//** Global textual link color — set authoritatively before the Bootstrap @import below.
 
 
 //== Typography
@@ -105,7 +100,7 @@ $input-color-placeholder:        $gray-light !default;
 //== Dropdowns
 //
 //## Dropdown menu container and contents.
-$dropdown-font-size: 14px;
+// $dropdown-font-size intentionally omitted — inherits from $font-size-base (0.875rem = 14px)
 
 //** Divider color for between dropdown items.
 $dropdown-divider-bg:            $gray-light !default;
@@ -152,9 +147,28 @@ $thumbnail-border:            #999 !default;
 $icon-font-path: "../fonts/";
 @import url(https://fonts.googleapis.com/css?family=Lato%3A700%7CRoboto%3A300%2C400%2C400i%2C500%2C700%2C900&ver=5.2.1);
 
+//== Typography: match BS3 pixel sizes expressed as rem (browser default 1rem = 16px)
+// BS3 body was 14px; headings were: h1=36px, h2=30px, h3=24px, h4=18px, h5=14px, h6=12px
+$font-size-base:    0.875rem; // 14px
+$line-height-base:  1.4286;   // 20px (20 / 14)
+$h1-font-size:      2.25rem;  // 36px
+$h2-font-size:      1.875rem; // 30px
+$h3-font-size:      1.5rem;   // 24px
+$h4-font-size:      1.125rem; // 18px
+$h5-font-size:      0.875rem; // 14px
+$h6-font-size:      0.75rem;  // 12px
+
+// Links: match BS3  a { color: #c44d34; text-decoration: none }
+//        and BS3  a:hover, a:focus { text-decoration: underline } (explicit because $link-decoration is none)
+$link-color:             #c44d34;
+$link-decoration:        none;
+$link-hover-decoration:  underline;
+// $link-hover-color is computed by BS5 as shift-color($link-color) → ~#883524, matching BS3 darken(15%)
+
 @import "../vendor/bootstrap/scss/bootstrap.scss";
 @import "./old-theme/child_theme_variables";
 @import "./old-theme/child_theme";
+
 
 #wrapper-navbar {
   @import "./old-theme/partials/header";

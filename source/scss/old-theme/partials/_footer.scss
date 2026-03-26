@@ -19,6 +19,7 @@
     .btn {
       margin-right: 10px;
       font-size: 12px;
+      line-height: 20px;
     }
     .social {
       margin: 0 0 0 5px;
@@ -134,7 +135,7 @@
     a {
       color: $c-text;
       font-weight: 500;
-      font-size: 1rem;
+      font-size: $font-size-base;
       display: inline-block;
       margin-bottom: 5px;
     }
@@ -153,6 +154,9 @@
   padding-top: 50px;
   padding-bottom: 50px;
   color: $c-text-light;
+  h4, .h4 {
+    line-height: 1.1; // (matches BS3)
+  }
   img {
     margin-top: 20px;
   }

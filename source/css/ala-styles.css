@@ -12,21 +12,285 @@ body.background-lightgrey {background-color:#f2f2f2;}
 .no-gutter>[class*='col-']{padding-right:0;padding-left:0;}
 .col-centered{float:none;margin:0 auto;}
 
+/* Match BS3 .row margins: BS3 uses -15px / 15px gutters; BS5 default is -12px / 12px (1.5rem gutter).
+   Override --bs-gutter-x to 1.875rem (30px) so calc(-0.5 * 30px) = -15px each side. */
+.row {
+    --bs-gutter-x: 1.875rem;
+}
+
+/* Match BS3 container/container-fluid padding: BS3 uses 15px each side; BS5 default is 12px (0.75rem).
+   Override --bs-gutter-x to 1.875rem (30px) so calc(0.5 * 30px) = 15px each side. */
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+    --bs-gutter-x: 1.875rem;
+}
+
+/* Match BS3 container widths at the three shared breakpoints.
+   BS5 uses max-width; values differ: 720/960/1140 vs BS3's 750/970/1170. */
+@media (min-width: 768px) {
+    .container {
+        max-width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1170px;
+    }
+}
+
+/* BS5 applies gutter padding to all .row > * children; BS3 only applies it to .col-* children.
+   Reset padding on non-col direct children, then re-apply only to col-* children. */
+.row > * {
+    padding-right: 0;
+    padding-left: 0;
+}
+.row > [class*="col-"], .row > .col {
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+}
+
 /* Buttons
 ================================= */
-.btn-primary {
-    background-color: #c44d34;
-    color: white;
-    border-color: #c44d34;
+
+/* btn-primary: match BS3 (#c44d34 bg, white text; darken on hover/focus/active) */
+.btn-primary, .gform_button {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #c44d34;
+    --bs-btn-border-color: #c44d34;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #9c3d29;
+    --bs-btn-hover-border-color: #943a27;
+    --bs-btn-focus-shadow-rgb: 156, 61, 41;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #9c3d29;
+    --bs-btn-active-border-color: #943a27;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #c44d34;
+    --bs-btn-disabled-border-color: #c44d34;
+}
+
+/* footer btn-primary: matches the navbar orange (#f26649), not the default dark red */
+footer .btn-primary, footer .gform_button {
+    --bs-btn-color: #212121;
+    --bs-btn-bg: #f26649;
+    --bs-btn-border-color: #f26649;
+    --bs-btn-hover-color: #212121;
+    --bs-btn-hover-bg: #ef4825;
+    --bs-btn-hover-border-color: #ef3e19;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #ef3e19;
+    --bs-btn-active-border-color: #eb3611;
+    --bs-btn-disabled-color: #212121;
+    --bs-btn-disabled-bg: #f26649;
+    --bs-btn-disabled-border-color: #f26649;
+}
+
+/* footer btn-outline-light: explicitly scoped to match the navbar header values */
+footer .btn-outline-light {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: #fff;
+    --bs-btn-hover-color: #212121;
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: #fff;
+    --bs-btn-active-color: #212121;
+    --bs-btn-active-bg: #fff;
+    --bs-btn-active-border-color: #fff;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #fff;
+}
+
+/* footer button padding: match navbar context (5px 30px base, 4px 18px for btn-sm) */
+footer .btn, footer .gform_button {
+    padding: 5px 30px;
+}
+footer .btn-sm, footer .btn-group-sm > .btn, footer .btn-group-sm > .gform_button {
+    padding: 4px 18px;
+}
+
+/* btn-outline-dark: match BS3 btn-default (white bg, black text, #999 border; grey on hover/active) */
+.btn-outline-dark {
+    --bs-btn-color: #000;
+    --bs-btn-bg: #fff;
+    --bs-btn-border-color: #999;
+    --bs-btn-hover-color: #000;
+    --bs-btn-hover-bg: #e6e6e6;
+    --bs-btn-hover-border-color: #7a7a7a;
+    --bs-btn-focus-shadow-rgb: 130, 138, 145;
+    --bs-btn-active-color: #000;
+    --bs-btn-active-bg: #e6e6e6;
+    --bs-btn-active-border-color: #7a7a7a;
+    --bs-btn-disabled-color: #000;
+    --bs-btn-disabled-bg: #fff;
+    --bs-btn-disabled-border-color: #999;
+}
+
+/* btn-danger: match BS3 darken states (#bd2130 hover/active, #b51f2e border) */
+.btn-danger {
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #bd2130;
+    --bs-btn-hover-border-color: #b51f2e;
+    --bs-btn-focus-shadow-rgb: 225, 83, 97;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #bd2130;
+    --bs-btn-active-border-color: #b51f2e;
+}
+
+/* btn-sm: match BS3 border-radius of 3px; BS5 uses --bs-border-radius-sm = 0.25rem (4px) */
+.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .gform_button {
+    --bs-btn-border-radius: 3px;
+}
+
+/* btn-outline-light: used in navbar and footer on dark backgrounds.
+   BS3 had this class; BS5 only has btn-outline-light which uses grey (#ced4da) instead of white. */
+.btn-outline-light {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: #fff;
+    --bs-btn-hover-color: #212121;
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: #fff;
+    --bs-btn-focus-shadow-rgb: 255, 255, 255;
+    --bs-btn-active-color: #212121;
+    --bs-btn-active-bg: #fff;
+    --bs-btn-active-border-color: #fff;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #fff;
+}
+
+/* Footer button focus box-shadows: match BS3 #wrapper-navbar>nav / footer context rules.
+   The navbar equivalents live in _header.scss; footer is styled here. */
+footer .btn:focus, footer .gform_button:focus, footer .btn.focus, footer .focus.gform_button {
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(242, 102, 73, .25);
+}
+footer .btn-primary:focus, footer .btn-primary.focus {
+    box-shadow: 0 0 0 .2rem rgba(242, 102, 73, .5);
+}
+footer .btn-outline-light:focus, footer .btn-outline-light.focus {
+    box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .5);
+}
+footer .btn-outline-dark:focus, footer .btn-outline-dark.focus {
+    box-shadow: 0 0 0 .2rem rgba(130, 138, 145, .5);
+}
+footer .btn-secondary:focus, footer .btn-secondary.focus {
+    box-shadow: 0 0 0 .2rem rgba(99, 112, 115, .5);
+}
+footer .btn-success:focus, footer .btn-success.focus {
+    box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .5);
+}
+footer .btn-info:focus, footer .btn-info.focus {
+    box-shadow: 0 0 0 .2rem rgba(23, 162, 184, .5);
+}
+footer .btn-warning:focus, footer .btn-warning.focus {
+    box-shadow: 0 0 0 .2rem rgba(255, 193, 7, .5);
+}
+footer .btn-danger:focus, footer .btn-danger.focus {
+    box-shadow: 0 0 0 .2rem rgba(220, 53, 69, .5);
+}
+
+/* BS3 applied focus ring on :focus (mouse + keyboard); BS5 restricts to :focus-visible (keyboard only).
+   Re-add :focus so the native browser focus ring appears, matching BS3 behaviour. */
+.btn:focus, .gform_button:focus, .btn.focus, .focus.gform_button, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+/* Nav / Tabs
+================================= */
+
+/* nav-link: BS3 padding was 10px 15px; BS5 is 0.5rem 1rem (8px 16px) */
+.nav-link {
+    padding: 10px 15px;
+}
+
+/* nav-link hover: BS3 showed a grey background; BS5 only changes colour */
+.nav-link:hover, .nav-link:focus {
+    background-color: #f2f2f2;
+}
+
+/* nav-link focus: BS5 uses an orange box-shadow; restore native outline like BS3 */
+.nav-link:focus-visible {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+    box-shadow: none;
+}
+
+/* nav-tabs: fix tab border-radius to match BS3's 4px (BS5 uses --bs-border-radius = 0.375rem / 6px)
+   and fix active tab border/colour to match BS3 exactly */
+.nav-tabs {
+    --bs-nav-tabs-border-radius: 4px;
+    --bs-nav-tabs-link-active-color: #6c757d;
+    --bs-nav-tabs-link-active-border-color: #999 #999 #fff;
 }
 
 /* Headings
 ================================= */
-
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-    text-decoration: none;
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
+h1 small, h1 .small, .h1 small, .h1 .small,
+h2 small, h2 .small, .h2 small, .h2 .small,
+h3 small, h3 .small, .h3 small, .h3 .small {
+    font-size: 65%;
+}
+
+h4, .h4, h5, .h5, h6, .h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Typography
+================================= */
+
+/* label: BS3 font-weight: bold (700) and margin-bottom: 5px; BS5 has neither */
+label {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+/* small: BS3 uses 80%; BS5 uses 0.875em */
+small, .small {
+    font-size: 80%;
+}
+
+/* hr: BS5 adds opacity: 0.25 making it very faint; BS3 hr was fully opaque */
+hr {
+    opacity: 1;
+}
+
+/* form-control: BS3 uses 1px solid #999 border and 4px radius; BS5 defaults differ */
+.form-control {
+    border: 1px solid #999;
+    border-radius: 4px;
+}
+
+/* form-control readonly/disabled: BS3 uses #f2f2f2 bg and opacity: 1 for both;
+   disabled also gets cursor: not-allowed. BS5 has no readonly background rule. */
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #f2f2f2;
+    opacity: 1;
+}
+
+.form-control[disabled], fieldset[disabled] .form-control {
+    cursor: not-allowed;
+}
 /* Breadcrumb
 ================================= */
 section#breadcrumb {padding: 12px 0 15px 19px;border-bottom: 1px solid #E7E7E7;background-color: #E7E7E7;}
@@ -54,12 +318,6 @@ section#breadcrumb li + li::before {
     background-color: #f5f5f5;
     border: 1px solid #e3e3e3;
     border-radius: 4px;
-}
-.card-ala-light .btn-outline-dark {
-    background-color: white;
-}
-.card-ala-light .btn-outline-dark:hover {
-    background-color: #212529;
 }
 
 /* table of contents floating div */
