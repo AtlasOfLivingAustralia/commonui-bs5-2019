@@ -14,7 +14,7 @@ const {src, dest, series, parallel} = gulp;
 var paths = {
     styles: {
         'boostrap-ala': 'source/scss/bootstrap-ala.scss',
-        'font-awesome': 'source/vendor/fontawesome/scss/fontawesome.scss',
+        'font-awesome': 'source/scss/fontawesome.scss',
         dest: 'build/css/',
         jqueryui: 'source/vendor/jquery/jquery-ui-autocomplete.css',
         dependencycss: ['source/css/*.css']
@@ -25,7 +25,8 @@ var paths = {
     },
     font: {
         src: ['source/vendor/old-fonts/*.*'],
-        dest: 'build/fonts/'
+        dest: 'build/fonts/',
+        fontawesomeSrc: ['source/vendor/fontawesome/webfonts/*.*']
     },
     js: {
         src: [
@@ -132,6 +133,7 @@ function buildMustacheVars(variant) {
  * Render standalone banner-*.html and footer-*.html files for each variant.
  */
 function testHTMLVariants(cb) {
+    fs.mkdirSync(paths.mustache.dest, {recursive: true});
     var bannerTemplate = fs.readFileSync('source/html/banner.mustache', 'utf8');
     var footerTemplate = fs.readFileSync('source/html/footer.mustache', 'utf8');
 
@@ -190,7 +192,12 @@ function mustache() {
 };
 
 function font() {
-    return src(paths.font.src)
+    return src(paths.font.src, {encoding: false})
+        .pipe(dest(paths.font.dest));
+}
+
+function fontawesomeWebfonts() {
+    return src(paths.font.fontawesomeSrc, {encoding: false})
         .pipe(dest(paths.font.dest));
 }
 
@@ -226,13 +233,17 @@ function otherJsFiles() {
 
 var js = parallel(jQuery, bootstrapJS, autocompleteJS, otherJsFiles);
 
-var build = parallel(css, series(testHTMLVariants, testHTMLPage), mustache, font, js);
+var html = series(testHTMLVariants, testHTMLPage, mustache);
+
+var fonts = series(font, fontawesomeWebfonts);
+
+var build = parallel(css, html, fonts, js);
 
 exports.otherCSSFiles = otherCSSFiles;
 
 exports.default = build;
 exports.css = css;
-exports.font = font;
+exports.font = fonts;
 exports.js = js;
-exports.mustache = series([testHTMLVariants, testHTMLPage, mustache]);
+exports.mustache = html;
 exports.build = build;
