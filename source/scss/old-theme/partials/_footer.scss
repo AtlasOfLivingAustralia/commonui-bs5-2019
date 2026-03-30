@@ -4,7 +4,9 @@
   padding-top: 50px;
   padding-bottom: 50px;
   .custom-logo {
+    width: 100%;
     max-width: 290px;
+    height: auto;
   }
   a:not(.btn) {
     color: $primary;
@@ -16,6 +18,8 @@
     margin-top: 20px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
     .btn {
       margin-right: 10px;
       font-size: 12px;
@@ -23,6 +27,8 @@
     }
     .social {
       margin: 0 0 0 5px;
+      display: flex;
+      flex-wrap: wrap;
       li {
         margin: 0;
       }
@@ -52,6 +58,15 @@
     }
   }
   @include media-breakpoint-down(lg) {
+    > .container > .row.align-items-center.align-items-baseline {
+      row-gap: 30px;
+      > .logo-column,
+      > .content-column {
+        flex: 1 1 320px;
+        width: auto;
+        max-width: 100%;
+      }
+    }
     .logo-column {
       text-align: center;
       padding-bottom: 30px;
