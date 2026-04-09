@@ -218,6 +218,13 @@ footer .btn-danger:focus, footer .btn-danger.focus {
     padding: 10px 15px;
 }
 
+/* from bs3 */
+.navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px
+}
+
 /* nav-link hover: BS3 showed a grey background; BS5 only changes colour */
 .nav-link:hover, .nav-link:focus {
     background-color: #f2f2f2;
@@ -243,17 +250,20 @@ footer .btn-danger:focus, footer .btn-danger.focus {
 h1, .h1, h2, .h2, h3, .h3 {
     margin-top: 20px;
     margin-bottom: 10px;
+    line-height: 1.1;
 }
 
 h1 small, h1 .small, .h1 small, .h1 .small,
 h2 small, h2 .small, .h2 small, .h2 .small,
 h3 small, h3 .small, .h3 small, .h3 .small {
     font-size: 65%;
+    line-height: 1;
 }
 
 h4, .h4, h5, .h5, h6, .h6 {
     margin-top: 10px;
     margin-bottom: 10px;
+    line-height: 1.1;
 }
 
 /* Typography
@@ -323,6 +333,37 @@ section#breadcrumb li + li::before {
 /* table of contents floating div */
 .toc-floating-menu.affix {position: static;}
 .sidebar-col {margin-bottom: 20px;position:relative !important;}
+
+/* bs3 consistent values */
+ol, ul {
+    padding-inline-start: 40px;
+    margin-top: 0;
+    margin-bottom: 10px
+}
+
+/* bs3 p padding */
+p {
+    margin: 0 0 10px
+}
+
+/* bs3 btn-sm padding */
+.btn-sm,.btn-group-sm>.btn,.btn-group-sm>.gform_button {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px
+}
+
+/* bs3 container-fluid padding */
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* bs3 no wrap for some buttons */
+.btn,.gform_button {
+    white-space: nowrap;
+}
 
 /* Colours and Swatchs
 ================================= */
