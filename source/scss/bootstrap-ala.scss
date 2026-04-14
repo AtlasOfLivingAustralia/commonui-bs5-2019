@@ -20,7 +20,7 @@ $success:               $brand-success;
 $info:                  $brand-info;
 $warning:               $brand-warning;
 $danger:                $brand-danger;
-$light:                 $gray-light;
+$light:                 #f5f5f5; // BS3 well/panel-default bg
 $dark:                  $gray-dark;
 
 
@@ -112,6 +112,32 @@ $dropdown-link-hover-bg:         $gray-lighter !default;
 
 $grid-float-breakpoint: 992px !default;
 
+//== Alerts: restore BS3 exact colours
+// BS3: .alert-success { color: #3c763d; background-color: #dff0d8; border-color: #d6e9c6; }
+$success-text-emphasis:   #3c763d;
+$success-bg-subtle:       #dff0d8;
+$success-border-subtle:   #d6e9c6;
+
+// BS3: .alert-info { color: #31708f; background-color: #d9edf7; border-color: #bce8f1; }
+$info-text-emphasis:      #31708f;
+$info-bg-subtle:          #d9edf7;
+$info-border-subtle:      #bce8f1;
+
+// BS3: .alert-warning { color: #8a6d3b; background-color: #fcf8e3; border-color: #faebcc; }
+$warning-text-emphasis:   #8a6d3b;
+$warning-bg-subtle:       #fcf8e3;
+$warning-border-subtle:   #faebcc;
+
+// BS3: .alert-danger { color: #a94442; background-color: #f2dede; border-color: #ebccd1; }
+$danger-text-emphasis:    #a94442;
+$danger-bg-subtle:        #f2dede;
+$danger-border-subtle:    #ebccd1;
+
+// BS3: bg-light / well / panel-default — #f5f5f5 bg, #ddd border
+$light-text-emphasis:     $gray-dark;  // #343a40
+$light-bg-subtle:         #f5f5f5;
+$light-border-subtle:     #ddd;
+
 //** Border color for table and cell borders.
 $table-border-color:            #999 !default;
 
@@ -145,7 +171,7 @@ $thumbnail-border:            #999 !default;
 
 // Font
 $icon-font-path: "../fonts/";
-@import url(https://fonts.googleapis.com/css?family=Lato%3A700%7CRoboto%3A300%2C400%2C400i%2C500%2C700%2C900&ver=5.2.1);
+@import url(https://fonts.googleapis.com/css?family=Lato%3A700%7CRoboto%3A300%2C400%2C400i%2C500%2C700%2C700i%2C900&ver=5.2.1);
 
 //== Typography: match BS3 pixel sizes expressed as rem with a BS3-style 14px root
 // BS3 font-size-root was 14px; headings were: h1=36px, h2=30px, h3=24px, h4=18px, h5=14px, h6=12px
