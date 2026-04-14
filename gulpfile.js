@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     replace = require('gulp-replace'),
     uglify = require('gulp-uglify'),
     babel = require('gulp-babel'),
+    concat = require('gulp-concat'),
     fs = require('fs'),
     gulpClean = require('gulp-clean'),
     buildvars = require('./buildvars.js');
@@ -233,11 +234,37 @@ function otherJsFiles() {
 
 var js = parallel(jQuery, bootstrapJS, autocompleteJS, otherJsFiles);
 
+function combinedCSS() {
+    return src([
+        'build/css/bootstrap.min.css',
+        'build/css/bootstrap-theme.min.css',
+        'build/css/autocomplete.min.css',
+        'build/css/autocomplete-extra.min.css',
+        'build/css/font-awesome.min.css',
+        'build/css/ala-styles.min.css'
+    ], {allowEmpty: true})
+        .pipe(concat('ala-combined.css', {newLine: '\n'}))
+        .pipe(dest('build/css/'));
+}
+
+function combinedJS() {
+    return src([
+        'build/js/jquery.min.js',
+        'build/js/bootstrap.min.js',
+        'build/js/autocomplete.min.js',
+        'build/js/application.js'
+    ], {allowEmpty: true})
+        .pipe(concat('ala-combined.js', {newLine: '\n'}))
+        .pipe(dest('build/js/'));
+}
+
+var combined = parallel(combinedCSS, combinedJS);
+
 var html = series(testHTMLVariants, testHTMLPage, mustache);
 
 var fonts = series(font, fontawesomeWebfonts);
 
-var build = parallel(css, html, fonts, js);
+var build = series(parallel(css, html, fonts, js), combined);
 
 exports.otherCSSFiles = otherCSSFiles;
 
@@ -246,4 +273,5 @@ exports.css = css;
 exports.font = fonts;
 exports.js = js;
 exports.mustache = html;
+exports.combined = combined;
 exports.build = build;
