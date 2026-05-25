@@ -1,36 +1,38 @@
 <footer class="site-footer bootstrap" id="colophon">
     <div class="footer-top">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center align-items-baseline">
                 <div class="col-sm-12 col-md-4 align-center logo-column">
                     <img width="1005" src="https://www.ala.org.au/app/uploads/2019/01/logo.png" class="custom-logo"
                          alt="Atlas of Living Australia" itemprop="logo"
                          srcset="https://www.ala.org.au/app/uploads/2019/01/logo.png 1005w, https://www.ala.org.au/app/uploads/2019/01/logo-300x45.png 300w, https://www.ala.org.au/app/uploads/2019/01/logo-768x115.png 768w"
                          sizes="(max-width: 1005px) 100vw, 1005px">
-                    <div class="account ::loginStatus::">
+                    <div class="account {{loginStatus}}">
                         <a href="==signUpURL=="
                            class="btn btn-outline-light btn-sm signUpBtn" role="button">Sign up</a>
                         <a href="==profileURL=="
                            class="btn btn-outline-light btn-sm myProfileBtn" role="button">My profile</a>
-                        <a href="::loginURL::" class="btn btn-primary btn-sm loginBtn">Login</a>
-                        <a href="::logoutURL::" class="btn btn-outline-light btn-sm logoutBtn" role="button">Logout</a>
+                        <a href="{{loginURL}}" class="btn btn-primary btn-sm loginBtn">Login</a>
+                        <a href="{{logoutURL}}" class="btn btn-outline-light btn-sm logoutBtn" role="button">Logout</a>
                         <ul class="social">
                             <li><a href="http://www.facebook.com/atlasoflivingaustralia" target="_blank"><i
                                     class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="http://www.twitter.com/atlaslivingaust" target="_blank"><i
-                                    class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/atlasoflivingaustralia/" target="_blank"><i
+                                    class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="https://au.linkedin.com/company/atlas-of-living-australia" target="_blank"><i
+                                    class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div><!--col end -->
                 <div class="col-sm-6 col-md-4 content-column">
-                    <div class="media content">
-                        <div class="media-left">
-                            <img class="media-object image"
+                    <div class="d-flex content">
+                        <div class="flex-shrink-0">
+                            <img class="image"
                                  src="https://www.ala.org.au/app/uploads/2020/04/iNaturalistAU-Logomark-white.svg"
                                  alt="">
                         </div>
-                        <div class="media-body">
-                            <h4 class="h4"><a class="underline"
+                        <div class="flex-grow-1 ms-3">
+                            <h4 class="h4"><a class="text-decoration-underline"
                                               href="==homeDomain==/home/record-a-sighting/">Record
                                 a Sighting</a></h4>
                             <p>Upload your observations, identify species, and contribute to the ALA.</p>
@@ -38,14 +40,14 @@
                     </div>
                 </div><!--col end -->
                 <div class="col-sm-6 col-md-4 content-column">
-                    <div class="media content">
-                        <div class="media-left">
-                            <img class="media-object image"
+                    <div class="d-flex content">
+                        <div class="flex-shrink-0">
+                            <img class="image"
                                  src="https://www.ala.org.au/app/uploads/2019/05/spatial-portal-white-trans-70.png"
                                  alt=""/>
                         </div>
-                        <div class="media-body">
-                            <h4 class="h4"><a href="https://spatial.ala.org.au/" class="underline">Explore the Spatial Portal</a></h4>
+                        <div class="flex-grow-1 ms-3">
+                            <h4 class="h4"><a href="https://spatial.ala.org.au/" class="text-decoration-underline">Explore the Spatial Portal</a></h4>
                             <p>Visualise and analyse relationships between species, location and environment.</p>
                         </div>
                     </div>
@@ -58,7 +60,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-3">
-                    
+
                     <div class="footer-menu">
                         <ul id="menu-search-analyse" class="menu">
                             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
@@ -97,7 +99,7 @@
                     </div>
                 </div><!--col end -->
                 <div class="col-md-6 col-lg-3">
-                    
+
                     <div class="footer-menu">
                         <ul id="menu-contribute" class="menu">
                             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
@@ -134,12 +136,10 @@
 +                                             href="==homeDomain==/publications/">Brochures and reports</a></li>
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
 +                                             href="==homeDomain==/ala-logo-and-identity/">ALA logo and identity</a></li>
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a 
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
                                               href="==homeDomain==/biosecurity" class="dropdown-item">Biosecurity Hub</a></li>
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
 +                                             href="==homeDomain==/ala-cited-publications/">ALA-cited publications</a></li>
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
-                                            href="==homeDomain==/education-resources/">Education resources</a></li>
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
                                             href="==homeDomain==/abdmp/">Data Mobilisation Program</a></li>
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
@@ -150,7 +150,7 @@
                     </div>
                 </div><!--col end -->
                 <div class="col-md-6 col-lg-3">
-                    
+
                     <div class="footer-menu">
                         <ul id="menu-about" class="menu">
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
@@ -173,7 +173,7 @@
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
 +                                             href="==homeDomain==/current-projects/">Current projects</a></li>
                                     <li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-                                            
+
                                             href="https://living-atlases.gbif.org/">International Living Atlases</a>
                                     </li>
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
@@ -190,7 +190,7 @@
             </div><!--row end -->
             <div class="row">
                 <div class="col-md-6 col-lg-3">
-                    
+
                     <div class="footer-menu">
                         <ul id="menu-tools" class="menu">
                             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
@@ -198,12 +198,12 @@
                                 <ul class="sub-menu">
                                     <li class="menu-item menu-item-type-custom menu-item-object-custom"><a
                                         href="==homeDomain==/biocollect/">BioCollect</a></li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom"><a 
+                                    <li class="menu-item menu-item-type-custom menu-item-object-custom"><a
                                         href="https://galah.ala.org.au/">galah</a>
                                     </li>
                                     <li class="menu-item menu-item-type-custom menu-item-object-custom"><a
                                         href="https://profiles.ala.org.au/opus/foa">Flora of Australia</a></li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom"><a 
+                                    <li class="menu-item menu-item-type-custom menu-item-object-custom"><a
                                         href="https://fieldcapture.ala.org.au/">MERIT</a>
                                     </li>
                                     <li class="menu-item menu-item-type-custom menu-item-object-custom"><a
@@ -218,7 +218,7 @@
                     </div>
                 </div><!--col end -->
                 <div class="col-md-6 col-lg-3">
-                    
+
                     <div class="footer-menu">
                         <ul id="menu-community-hubs" class="menu">
                             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
@@ -242,7 +242,7 @@
                     </div>
                 </div><!--col end -->
                 <div class="col-md-6 col-lg-3">
-                    
+
                     <div class="footer-menu">
                         <ul id="menu-ala-for" class="menu">
                             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
@@ -277,7 +277,7 @@
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
                                               href="https://support.ala.org.au/support/solutions/6000138349">ALA Spatial Portal help</a></li>
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
-                                                href="https://support.ala.org.au/support/solutions/articles/6000261662-citing-the-ala">How to cite the ALA</a></li>    
+                                                href="https://support.ala.org.au/support/solutions/articles/6000261662-citing-the-ala">How to cite the ALA</a></li>
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
                                               href="==homeDomain==/contact-us/">Contact us</a></li>
                                 </ul>
@@ -286,20 +286,20 @@
                     </div>
                 </div><!--col end -->
                 <div class="col-md-12">
-                    
+
                     <div class="footer-menu-horizontal">
                         <ul id="menu-other-links" class="menu horizontal">
                             <li class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent"><a
-                                    class="underline" href="==homeDomain==/blog/">News &amp; media</a>
+                                    class="text-decoration-underline" href="==homeDomain==/blog/">News &amp; media</a>
                             </li>
                             <li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-                                    class="underline" href="https://support.ala.org.au/support/home">Help</a></li>
+                                    class="text-decoration-underline" href="https://support.ala.org.au/support/home">Help</a></li>
                             <li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-                                    class="underline" 
+                                    class="text-decoration-underline"
                                     href="https://support.ala.org.au/support/solutions/folders/6000233596">Developer
                                 tools &amp; documentation</a></li>
                             <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
-                                    class="underline" 
+                                    class="text-decoration-underline"
                                     href="==homeDomain==/sites-and-services/">All sites, services &amp;
                                 tools</a></li>
                         </ul>
@@ -314,9 +314,9 @@
             <div class="row">
                 <div class="col-md-6 content-column">
                     <h4>The ALA is made possible by contributions from its partners, is supported by <a
-                            href="https://www.dese.gov.au/ncris" class="underline">NCRIS</a>,
-                        is hosted by <a href="https://csiro.au/" class="underline">CSIRO</a>, and is the Australian node of <a
-                                href="https://www.gbif.org/en/" class="underline">GBIF</a>.</h4>
+                            href="https://www.dese.gov.au/ncris" class="text-decoration-underline">NCRIS</a>,
+                        is hosted by <a href="https://csiro.au/" class="text-decoration-underline">CSIRO</a>, and is the Australian node of <a
+                                href="https://www.gbif.org/en/" class="text-decoration-underline">GBIF</a>.</h4>
                     <p>
                         <a href="https://www.dese.gov.au/ncris"><img
                                 class="alignnone wp-image-41895 size-thumbnail"
@@ -335,8 +335,8 @@
                 </div>
                 <div class="col-md-6 content-column">
                     <h4>Acknowledgement of Traditional Owners and Country</h4>
-                    <p>The Atlas of Living Australia acknowledges Australia’s Traditional Owners and pays respect to the
-                        past and present Elders of the nation’s Aboriginal and Torres Strait Islander communities. We
+                    <p>The Atlas of Living Australia acknowledges Australia&rsquo;s Traditional Owners and pays respect to the
+                        past and present Elders of the nation&rsquo;s Aboriginal and Torres Strait Islander communities. We
                         honour and celebrate the spiritual, cultural and customary connections of Traditional Owners to
                         country and the biodiversity that forms part of that country.</p>
                 </div><!--col end -->
@@ -350,13 +350,13 @@
                 <div class="col-sm-12 col-md-7">
                     <p class="alert-text text-creativecommons">
                         This work is licensed under a <a href="https://creativecommons.org/licenses/by/3.0/au/">Creative
-                        Commons Attribution 3.0 Australia License</a> <a rel="license"
+                        Commons Attribution 3.0 Australia License</a>&nbsp;<a rel="license"
                                                                          href="http://creativecommons.org/licenses/by/3.0/au/"><img
                             alt="Creative Commons License" style="border-width:0"
                             src="https://www.ala.org.au/app/themes/pvtl/images/cc-by.png"></a>
                     </p>
                 </div><!--col end -->
-                <div class="col-sm-12 col-md-5 text-md-right">
+                <div class="col-sm-12 col-md-5 text-md-end">
                     <ul class="menu horizontal">
                         <li><a href="==homeDomain==/terms-of-use/#cy">Copyright</a>
                         </li>
@@ -370,22 +370,3 @@
     </div>
 </footer>
 <script src="https://cdn.usefathom.com/script.js" data-site="==fathomID==" defer></script>
-
-<!-- ALA support widget -->
-<script type="text/javascript" src="https://s3.amazonaws.com/assets.freshdesk.com/widget/freshwidget.js"></script>
-<script type="text/javascript">
-    FreshWidget.init("", {
-        "queryString": "&widgetType=popup&helpdesk_ticket[group_id]=6000207804&helpdesk_ticket[product_id]=6000005589&formTitle=Report+an+issue+or+ask+for+help",
-        "utf8": "✓",
-        "widgetType": "popup",
-        "buttonType": "text",
-        "buttonText": "Need help?",
-        "buttonColor": "white",
-        "buttonBg": "#d5502a",
-        "alignment": "2",
-        "offset": "350px",
-        "formHeight": "500px",
-        "url": "https://support.ala.org.au"
-    });
-</script>
-<!-- end ALA support widget -->

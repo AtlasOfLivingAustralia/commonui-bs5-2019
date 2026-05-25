@@ -20,7 +20,7 @@ $success:               $brand-success;
 $info:                  $brand-info;
 $warning:               $brand-warning;
 $danger:                $brand-danger;
-$light:                 $gray-light;
+$light:                 #f5f5f5; // BS3 well/panel-default bg
 $dark:                  $gray-dark;
 
 
@@ -35,12 +35,7 @@ $body-bg:               #fff !default;
 //** Global text color on `<body>`.
 $text-color:            $gray-darker !default;
 
-//** Global textual link color.
-$link-color:            #c44d34 !default;
-//** Link hover color set via `darken()` function.
-$link-hover-color:      darken($link-color, 15%) !default;
-//** Link hover decoration.
-$link-hover-decoration: underline !default;
+//** Global textual link color — set authoritatively before the Bootstrap @import below.
 
 
 //== Typography
@@ -81,7 +76,6 @@ $btn-danger-border:              $btn-danger-bg !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 
-
 //== Forms
 //
 //##
@@ -106,7 +100,7 @@ $input-color-placeholder:        $gray-light !default;
 //== Dropdowns
 //
 //## Dropdown menu container and contents.
-$dropdown-font-size: 14px;
+// $dropdown-font-size intentionally omitted — inherits from $font-size-base (1rem = 14px)
 
 //** Divider color for between dropdown items.
 $dropdown-divider-bg:            $gray-light !default;
@@ -118,8 +112,37 @@ $dropdown-link-hover-bg:         $gray-lighter !default;
 
 $grid-float-breakpoint: 992px !default;
 
+//== Alerts: restore BS3 exact colours
+// BS3: .alert-success { color: #3c763d; background-color: #dff0d8; border-color: #d6e9c6; }
+$success-text-emphasis:   #3c763d;
+$success-bg-subtle:       #dff0d8;
+$success-border-subtle:   #d6e9c6;
+
+// BS3: .alert-info { color: #31708f; background-color: #d9edf7; border-color: #bce8f1; }
+$info-text-emphasis:      #31708f;
+$info-bg-subtle:          #d9edf7;
+$info-border-subtle:      #bce8f1;
+
+// BS3: .alert-warning { color: #8a6d3b; background-color: #fcf8e3; border-color: #faebcc; }
+$warning-text-emphasis:   #8a6d3b;
+$warning-bg-subtle:       #fcf8e3;
+$warning-border-subtle:   #faebcc;
+
+// BS3: .alert-danger { color: #a94442; background-color: #f2dede; border-color: #ebccd1; }
+$danger-text-emphasis:    #a94442;
+$danger-bg-subtle:        #f2dede;
+$danger-border-subtle:    #ebccd1;
+
+// BS3: bg-light / well / panel-default — #f5f5f5 bg, #ddd border
+$light-text-emphasis:     $gray-dark;  // #343a40
+$light-bg-subtle:         #f5f5f5;
+$light-border-subtle:     #ddd;
+
 //** Border color for table and cell borders.
 $table-border-color:            #999 !default;
+
+// Navbar
+$navbar-light-color:            #999;
 
 // Navbar toggle
 $navbar-default-toggle-hover-bg:           #999 !default;
@@ -148,11 +171,43 @@ $thumbnail-border:            #999 !default;
 
 // Font
 $icon-font-path: "../fonts/";
-@import url(https://fonts.googleapis.com/css?family=Lato%3A700%7CRoboto%3A300%2C400%2C400i%2C500%2C700%2C900&ver=5.2.1);
+@import url(https://fonts.googleapis.com/css?family=Lato%3A700%7CRoboto%3A300%2C400%2C400i%2C500%2C700%2C700i%2C900&ver=5.2.1);
+
+//== Typography: match BS3 pixel sizes expressed as rem with a BS3-style 14px root
+// BS3 font-size-root was 14px; headings were: h1=36px, h2=30px, h3=24px, h4=18px, h5=14px, h6=12px
+$font-size-root: 14px;
+$font-size-base:    1rem;      // 14px
+$line-height-base:  1.4286;   // 20px (20 / 14)
+$h1-font-size:      2.5714rem; // 36px
+$h2-font-size:      2.1429rem; // 30px
+$h3-font-size:      1.7143rem; // 24px
+$h4-font-size:      1.2857rem; // 18px
+$h5-font-size:      1rem;      // 14px
+$h6-font-size:      0.8571rem; // 12px
+
+// Links: match BS3  a { color: #c44d34; text-decoration: none }
+//        and BS3  a:hover, a:focus { text-decoration: underline } (explicit because $link-decoration is none)
+$link-color:             #c44d34;
+$link-decoration:        none;
+$link-hover-decoration:  underline;
+// $link-hover-color is computed by BS5 as shift-color($link-color) → ~#883524, matching BS3 darken(15%)
 
 @import "../vendor/bootstrap/scss/bootstrap.scss";
+
+a:not([href]):not([class]) {
+  color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, 1));
+  text-decoration: $link-decoration;
+
+  &:hover,
+  &:focus {
+    --#{$prefix}link-color-rgb: var(--#{$prefix}link-hover-color-rgb);
+    text-decoration: $link-hover-decoration;
+  }
+}
+
 @import "./old-theme/child_theme_variables";
 @import "./old-theme/child_theme";
+
 
 #wrapper-navbar {
   @import "./old-theme/partials/header";

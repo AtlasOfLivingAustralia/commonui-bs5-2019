@@ -1,8 +1,8 @@
 <div id="wrapper-navbar" itemscope="" itemtype="http://schema.org/WebSite">
-    <a class="skip-link sr-only sr-only-focusable" href="#INSERT_CONTENT_ID_HERE">Skip to content</a>
+    <a class="skip-link visually-hidden visually-hidden-focusable" href="#INSERT_CONTENT_ID_HERE">Skip to content</a>
 
-    <nav class="navbar navbar-inverse navbar-expand-md">
-        <div class="::containerClass:: header-logo-menu">
+    <nav class="navbar navbar-dark navbar-expand-lg">
+        <div class="{{containerClass}} header-logo-menu">
             <div class="navbar-header">
                 <div>
                     <a href="==homeDomain==" class="custom-logo-link navbar-brand" itemprop="url">
@@ -11,9 +11,9 @@
                              srcset="https://www.ala.org.au/app/uploads/2019/01/logo.png 1005w, https://www.ala.org.au/app/uploads/2019/01/logo-300x45.png 300w, https://www.ala.org.au/app/uploads/2019/01/logo-768x115.png 768w"
                              sizes="(max-width: 1005px) 100vw, 1005px"> </a>
                 </div>
-                <div class="display-flex ::loginStatus::">
-                    <button class="display-flex search-trigger hidden-md hidden-lg collapsed collapse-trigger-button" title="Open search dialog"
-                            data-toggle="collapse" data-target="#autocompleteSearchALA"
+                <div class="display-flex {{loginStatus}}">
+                    <button class="display-flex search-trigger d-lg-none collapsed collapse-trigger-button" title="Open search dialog"
+                            data-bs-toggle="collapse" data-bs-target="#autocompleteSearchALA"
                             onclick="focusOnClickSearchButton()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 22 22">
                             <defs>
@@ -30,12 +30,14 @@
                         </svg>
                         <span class="collapse visible-on-show" aria-hidden="true">&times;</span>
                     </button>
-                    <a href="::loginURL::" role="button" class="account-mobile hidden-md hidden-lg loginBtn mobile-login-btn"
+                    <a href="{{loginURL}}" role="button" class="account-mobile d-lg-none loginBtn mobile-login-btn"
                        title="Login button">
-                        <i class="fas fa-sign-in"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M10 17v-3H3v-4h7V7l5 5-5 5Zm7 3h-7v-2h7V6h-7V4h7a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2Z"></path>
+                        </svg>
                     </a>
                     <a href="==profileURL==" role="button"
-                       class="account-mobile hidden-md hidden-lg myProfileBtn" title="Profile">
+                       class="account-mobile d-lg-none myProfileBtn" title="Profile">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 37 41">
                             <defs>
                                 <style>
@@ -50,31 +52,33 @@
                                   transform="translate(-596 -84)"></path>
                         </svg>
                     </a>
-                    <a href="::logoutURL::" role="button"
-                       class="account-mobile hidden-md hidden-lg logoutBtn mobile-logout-btn" title="Logout">
-                        <i class="fas fa-sign-out"></i>
+                    <a href="{{logoutURL}}" role="button"
+                       class="account-mobile d-lg-none logoutBtn mobile-logout-btn" title="Logout">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M14 17v-3H7v-4h7V7l5 5-5 5Zm-3 3H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7v2H4v12h7v2Z"></path>
+                        </svg>
                     </a>
-                    <button class="navbar-toggle collapsed collapse-trigger-button" type="button"
-                            data-toggle="collapse" data-target="#navbarOuterWrapper" aria-controls="navbarOuterWrapper"
+                    <div class="mobile-nav-toggle d-lg-none collapsed collapse-trigger-button"
+                            data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <div class="horizontal-line"></div>
                         <div class="horizontal-line"></div>
                         <div class="horizontal-line"></div>
                         <span class="collapse visible-on-show" aria-hidden="true">&times;</span>
-                    </button>
+                    </div>
                 </div>
             </div>
 
-            <div id="navbarOuterWrapper" class="outer-nav-wrapper collapse navbar-collapse">
-                <div class="top-bar hidden-xs hidden-sm">
+            <div id="navbarOuterWrapper" class="outer-nav-wrapper">
+                <div class="top-bar d-none d-lg-flex">
                     <a href="==homeDomain==/contact-us/" class="btn btn-link btn-sm">Contact us</a>
-                    <div class="account ::loginStatus::">
+                    <div class="account {{loginStatus}}">
                         <a href="==signUpURL=="
                            class="btn btn-outline-light btn-sm signUpBtn" role="button">Sign up</a>
                         <a href="==profileURL=="
                            class="btn btn-outline-light btn-sm myProfileBtn" role="button">Profile</a>
-                        <a href="::loginURL::" class="btn btn-primary btn-sm loginBtn">Login</a>
-                        <a href="::logoutURL::" class="btn btn-outline-light btn-sm logoutBtn" role="button">Logout</a>
+                        <a href="{{loginURL}}" class="btn btn-primary btn-sm loginBtn">Login</a>
+                        <a href="{{logoutURL}}" class="btn btn-outline-light btn-sm logoutBtn" role="button">Logout</a>
                     </div>
                 </div>
                 <div class="main-nav-wrapper">
@@ -115,7 +119,6 @@
                                 <li><a href="==homeDomain==/publications/" class="dropdown-item">Brochures and reports</a></li>
                                  <li><a href="==homeDomain==/ala-logo-and-identity/" class="dropdown-item">ALA logo and identity</a></li>
                                 <li><a href="==homeDomain==/ala-cited-publications/" class="dropdown-item">ALA-cited publications</a></li>
-                                <li><a href="==homeDomain==/education-resources/" class="dropdown-item">Education resources</a></li>
                                 <li><a href="==homeDomain==/abdmp/" class="dropdown-item">Data Mobilisation Program</a></li>
                                 <li><a href="https://labs.ala.org.au/" class="dropdown-item">ALA Labs</a></li>
                             </ul>
@@ -155,9 +158,9 @@
                         </ul>
                       </div>
 
-                    <button class="search-trigger hidden-xs hidden-sm collapsed collapse-trigger-button"
-                            data-toggle="collapse"
-                            data-target="#autocompleteSearchALA" onclick="focusOnClickSearchButton()">
+                    <button class="search-trigger d-none d-lg-block collapsed collapse-trigger-button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#autocompleteSearchALA" onclick="focusOnClickSearchButton()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 22 22"
                              title="Open search control">
                             <defs>
@@ -178,9 +181,9 @@
 
             </div>
         </div><!-- .container -->
-        <div class="::containerClass::">
+        <div class="{{containerClass}}">
             <div id="autocompleteSearchALA" class="collapse">
-                <form method="get" action="::searchServer::::searchPath::" class="search-form">
+                <form method="get" action="{{searchServer}}{{searchPath}}" class="search-form">
                     <div class="space-between">
                         <input id="autocompleteHeader" type="text" name="q"
                                placeholder="Search species, datasets, and more..." class="search-input"
