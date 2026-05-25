@@ -21,7 +21,7 @@ var paths = {
         dependencycss: ['source/css/*.css']
     },
     mustache: {
-        src: ['source/html/banner.mustache', 'source/html/footer.mustache', 'source/html/head.mustache'],
+        src: ['source/html/banner.mustache', 'source/html/footer.mustache', 'source/html/head.mustache', "source/html/assets.mustache"],
         dest: 'build/'
     },
     font: {
