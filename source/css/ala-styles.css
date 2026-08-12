@@ -50,6 +50,13 @@ body.background-lightgrey {background-color:#f2f2f2;}
     }
 }
 
+@media (max-width: 991.98px) {
+    #wrapper-navbar .navbar {
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+    }
+}
+
 /* BS5 applies gutter padding to all .row > * children; BS3 only applies it to .col-* children.
    Reset padding on non-col direct children, then re-apply only to col-* children. */
 .row > * {
